@@ -5,3 +5,10 @@
     --heading-color: #FFFCF2;
     --text-color: #CCC5B9;
 }
+
+/* GLOBAL SETTINGS */
+* {
+    /* Disabled text decoration so we control link theming */
+    text-decoration: none;
+    /* outline: 1px solid red; */
+}
