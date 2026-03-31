@@ -9,6 +9,209 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
     <script src="js/hamburger-handler.js" defer></script>
+    <style>
+        html {
+            background-color: var(--foreground);
+        }
+
+        main {
+            box-sizing: border-box;
+            padding: 50px;
+            width: 100vw;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            gap: 25px;
+            background-color: var(--background);
+        }
+
+        main h1 {
+            color: var(--primary-color);
+            font-size: 5rem;
+            text-align: center;
+        }
+
+        /* SEARCHBAR SECTION */
+
+        #searchContainer {
+            display: flex;
+            gap: 1.2rem;
+            width: clamp(80vw, 70%, 100%);
+        }
+
+        #searchContainer input {
+            border-radius: 20px 0px 0px 20px;
+            text-align: center;
+        }
+
+        #searchContainer button {
+            border-radius: 0px 20px 20px 0px;
+            width: max-content;
+            white-space: nowrap;
+            padding: .3rem;
+            font-size: .8rem;
+        }
+
+        /* HERO SECTION */
+
+        #hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            /* height: 40%; */
+            margin: 1rem;
+            margin-bottom: 5rem;
+        }
+
+        #hero * {
+            user-select: none;
+        }
+
+        #left-scrolling {
+            display: flex;
+            flex-flow: column nowrap;
+            align-items: center;
+            gap: 15px;
+            overflow-y: scroll;
+            background-color: var(--foreground);
+            width: 130px;
+            height: 700px;
+            padding: 10px;
+        }
+
+        #left-scrolling img {
+            /* box-sizing: border-box; */
+            width: 360px;
+            height: 360px;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+        }
+
+        #left-scrolling img.selected {
+            border: 3px solid var(--primary-color);
+        }
+
+        #primary-image {
+            position: relative;
+            background-image: url("./img/red-nissan.png");
+            background-size: cover;
+            width: 1200px;
+            height: 700px;
+            box-sizing: border-box;
+            padding: 25px;
+            box-shadow: 0 0 200px rgba(0, 0, 0, 0.5) inset;
+        }
+
+        #primary-image img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #primary-image h2 {
+            position: absolute;
+            color: var(--primary-color);
+            font-size: 3rem;
+            text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        }
+
+        #primary-image p {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: 25px;
+            font-size: 2.4rem;
+            color: var(--primary-color);
+            text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+        }
+
+        #primary-image button {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin: 25px;
+            padding: 25px;
+            border-radius: 20px;
+            font-weight: 900;
+            cursor: pointer;
+            color: var(--text-color);
+            background-color: var(--background);
+        }
+
+        /* PREVIOUSLY VIEWED CARS SECTION */
+        #previously-viewed>div {
+            width: 80vw;
+            min-height: 45vh;
+            /* outline: 1px solid red; */
+            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset; */
+            border-radius: 25px;
+            /* padding: 10px; */
+            box-sizing: border-box;
+        }
+
+        #display-chip-container {
+            display: flex;
+            gap: 1rem;
+        }
+
+        /* CAR DISPLAY CHIP */
+        .car-display-chip {
+            width: 450px;
+            height: 320px;
+            position: relative;
+            background-color: var(--foreground);
+            box-sizing: border-box;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .car-display-chip img {
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            height: 50%;
+            width: 100%;
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+        .car-display-chip * {
+            margin: 0px;
+        }
+
+        .car-display-chip hr {
+            margin-top: 15px;
+            margin-bottom: 35px;
+        }
+
+        .car-display-chip-details-price {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+
+        /* CAR BRANDS */
+        #car-brands div {
+            width: 80vw;
+            min-height: 45vh;
+            /* outline: 1px solid red; */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
+            border-radius: 25px;
+            padding: 10px;
+            box-sizing: border-box;
+
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 45px;
+            width: 100vw;
+            height: 60px;
+            background-color: var(--foreground);
+        }
+    </style>
 </head>
 
 <body>
@@ -29,11 +232,104 @@
         </nav>
     </header>
     <main>
+        <h1>Ling's Cars</h1>
+        <form id="searchContainer">
+            <input type="text" placeholder="Search a car..."><button type="submit">Search</button>
+        </form>
+        <div id="hero">
+            <div id="left-scrolling">
+                <img src="img/red-nissan.png" class="selected">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
+                <img src="img/red-nissan.png">
 
+            </div>
+            <div id="primary-image">
+                <h2 id="hero-car-name">2026 Nissan Versa</h2>
+                <p id="hero-car-price">$999/mo</p>
+                <button id="hero-view-details">View Details</button>
+            </div>
+        </div>
+        <div id="previously-viewed">
+            <h3>Previously Viewed</h3>
+            <div id="display-chip-container">
+                <!-- Car Display Chip -->
+                <div class="car-display-chip">
+                    <!-- Top half is a car image on cover -->
+                    <img src="./img/red-nissan.png" alt="">
+                    <div>
+                        <!-- This is bottom half - content n stuff -->
+                        <h4>2025 Nissan Sentra</h4>
+                        <p>25mpg City | 35mpg HW</p>
+                        <hr>
+                        <div class="car-display-chip-details-price">
+                            <!-- This div will be flex space-between -->
+                            <p>Car Details</p>
+                            <p>Price</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-display-chip">
+                    <!-- Top half is a car image on cover -->
+                    <img src="./img/red-nissan.png" alt="">
+                    <div>
+                        <!-- This is bottom half - content n stuff -->
+                        <h4>2025 Nissan Sentra</h4>
+                        <p>25mpg City | 35mpg HW</p>
+                        <hr>
+                        <div class="car-display-chip-details-price">
+                            <!-- This div will be flex space-between -->
+                            <p>Car Details</p>
+                            <p>Price</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="car-display-chip">
+                    <!-- Top half is a car image on cover -->
+                    <img src="./img/red-nissan.png" alt="">
+                    <div>
+                        <!-- This is bottom half - content n stuff -->
+                        <h4>2025 Nissan Sentra</h4>
+                        <p>25mpg City | 35mpg HW</p>
+                        <hr>
+                        <div class="car-display-chip-details-price">
+                            <!-- This div will be flex space-between -->
+                            <p>Car Details</p>
+                            <p>Price</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="car-brands">
+            <h3>Previously Viewed</h3>
+            <div>
+                <p>List of brands here...</p>
+            </div>
+        </div>
     </main>
     <footer>
 
     </footer>
+
 </body>
 
 </html>
