@@ -52,6 +52,11 @@ header nav li a {
 #header-container>li:hover a {
     color: var(--foreground);
     /* transition: all 0.10s ease-in-out; */
+    text-shadow: var(--foreground) 1px -2px;
+}
+
+#header-container>li:active a {
+    text-shadow: none;
 }
 
 #hamburger-icon {
