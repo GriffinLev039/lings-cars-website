@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- This sets the character encoding to UTF-8 so that all text, including special characters, displays correctly -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- This is for the sizing -->
+
+    <title>Leasing Application</title>
+    
+    <link rel="stylesheet" href="css/reset.css">
+    <!-- This links to a reset stylesheet, which removes default browser styling to ensure consistency across different browsers -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- This links to the global stylesheet that defines shared styles such as colors and general layout rules -->
+
+    <link rel="stylesheet" href="css/header.css">
+    <!-- This links to the stylesheet responsible for styling the navigation header and making it responsive -->
+
+    <link rel="stylesheet" href="css/leasing.css">
+    <!-- This links to a page-specific stylesheet that styles the leasing form and layout -->
+
+    <script src="js/hamburger-handler.js" defer></script>
+    <!-- This connects a JavaScript file that controls the hamburger menu functionality, and "defer" ensures it runs after the HTML is loaded -->
+</head>
+
+<body>
+
+<header>
+    <!-- This section represents the top navigation bar of the website -->
+
+    <div id="hburger-container">
+        <!-- This container groups the hamburger icon, logo, and spacer for mobile layout alignment -->
+
+        <button id="hamburger-icon">=</button>
+        <!-- Hamburger menu icon, which users can click to toggle navigation links on smaller screens -->
+
+        <div id="logo">LOGO</div>
+        <!--  placeholder for logo -->
+
+        <div id="invis-spacer"></div>
+        <!-- This invisible spacer helps maintain proper alignment and spacing within the header layout -->
+    </div>
+
+    <nav>
+        
+
+        <ul id="header-container">
+            <!-- This unordered list holds each navigation item -->
+
+            <li><a href="index.html">Car Leasing</a></li>
+            <!-- This list item links back to the homepage where users can browse cars -->
+
+            <li><a href="#">Van Leasing</a></li>
+
+            <li><a href="#">Contact Us</a></li>
+
+            <li><a href="#">About Us</a></li>
+            
+        </ul>
+    </nav>
+</header>
+
+<main class="leasing-main">
+    
+    <h1>Leasing Application</h1>
+
+    <form class="leasing-form">
+        <!-- This form element collects user input for the leasing application -->
+
+        <label for="name">Full Name</label>
+        
+        <input type="text" id="name" placeholder="John">
+        <!-- This input field allows the user to enter their full name, with a placeholder example provided -->
+
+        <label for="email">Email</label>
+        <!-- This label describes the email input field. -->
+
+        <input type="email" id="email" placeholder="John@email.com">
+        <!-- This input field allows the user to enter their email address and ensures proper email formatting -->
+
+        <label for="phone">Phone Number</label>
+        
+        <input type="tel" id="phone" placeholder="(999)-999-9999">
+        <!--This input field allows the user to enter a phone number in a readable format -->
+
+        <label for="car">Car Selected</label>
+
+        <input type="text" id="car" placeholder="Honda">
+        <!-- This input field shows or allows the user to enter the selected car model -->
+
+        <label for="term">Lease Term</label>
+
+        <input type="text" id="term" placeholder="N/A" class="error">
+        <!-- This input field allows entry of lease term, and the "error" class visually highlights it as invalid -->
+
+        <label for="budget">Monthly Budget</label>
+        
+        <input type="text" id="budget" placeholder="N/A" class="error">
+        <!-- This input field allows the user to enter their budget and is currently marked as an error state -->
+
+        <label for="down">Down Payment</label>
+        
+        <input type="text" id="down" placeholder="N/A" class="error">
+        <!-- This input field allows the user to enter a down payment amount and is marked as invalid -->
+
+        <label for="credit">Credit Score</label>
+        
+        <input type="text" id="credit" placeholder="N/A" class="error">
+        <!-- This input field allows the user to enter their credit score and is visually flagged as incorrect -->
+
+        <button type="submit">Submit Application</button>
+        
+        <p class="error-text">
+            Please Enter a Valid Input in the Highlighted Fields!!
+        </p>
+        
+
+    </form>
+
+</main>
+
+<footer>
+    
+
+</footer>
+
+</body>
+</html>

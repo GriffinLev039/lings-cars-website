@@ -1,0 +1,69 @@
+/* This styles the main container of the leasing page */
+.leasing-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--background);
+}
+
+/* This styles the page title */
+.leasing-main h1 {
+    color: var(--heading-color);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* This styles the form container */
+.leasing-form {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* This styles all labels */
+.leasing-form label {
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+/* This styles all input fields */
+.leasing-form input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--foreground);
+    color: var(--heading-color);
+}
+
+/* This adds a red border for invalid inputs */
+.error {
+    border: 2px solid red;
+}
+
+/* This styles the submit button */
+.leasing-form button {
+    margin-top: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* This styles the error message text */
+.error-text {
+    color: red;
+    font-size: 0.85rem;
+}
+
+/* Desktop adjustments */
+@media (min-width: 768px) {
+    .leasing-main {
+        padding: 50px;
+    }
+}
