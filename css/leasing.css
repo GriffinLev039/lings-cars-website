@@ -38,8 +38,7 @@
     color: var(--heading-color);
 }
 
-/* This adds a red border for invalid inputs */
-.error {
+input.error {
     border: 2px solid red;
 }
 
@@ -55,7 +54,7 @@
     cursor: pointer;
 }
 
-/* This styles the error message text */
+/* error test*/
 .error-text {
     color: red;
     font-size: 0.85rem;

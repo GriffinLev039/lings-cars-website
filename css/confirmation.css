@@ -1,0 +1,41 @@
+.confirmation-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    padding: 50px;
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.confirmation-main h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.summary-box {
+    background-color: var(--foreground);
+    padding: 30px;
+    width: 60%;
+    border-radius: 10px;
+}
+
+.summary-box h2,
+.summary-box h3 {
+    margin-bottom: 10px;
+}
+
+.summary-box p {
+    margin: 5px 0;
+}
+
+.browse-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+
+    background-color: var(--foreground);
+    color: var(--text-color);
+}
