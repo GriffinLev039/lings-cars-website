@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+
+    <!-- Removes default browser styles so everything looks consistent -->
+    <link rel="stylesheet" href="/css/reset.css">
+
+    <!-- Global colors and fonts shared across the whole site -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <!-- Styles the top navigation bar and hamburger menu -->
+    <link rel="stylesheet" href="/css/header.css">
+
+    <!-- Styles specific to the about us page -->
+    <link rel="stylesheet" href="/css/about-us.css">
+
+    <!-- Hamburger menu toggle, same one used on all pages -->
+    <script src="/js/hamburger-handler.js" defer></script>
+</head>
+
+<body>
+
+<!-- ── Navigation Header ── -->
+<!-- Same structure as index.html so header styles apply correctly -->
+<header>
+    <div id="hburger-container">
+        <!-- Shows on small screens, opens the nav menu when clicked -->
+        <button id="hamburger-icon">=</button>
+
+        <!-- Logo links back to the home page -->
+        <a id="logo" href="../index.html">LOGO</a>
+
+        <!-- Invisible spacer keeps the logo centered on mobile -->
+        <div id="invis-spacer"></div>
+    </div>
+
+    <nav>
+        <!-- Nav links, About Us is marked as the current page -->
+        <ul id="header-container">
+            <li id="car-leasing" class="header-item"><a href="./car-list.html">Car Leasing</a></li>
+            <li id="van-leasing" class="header-item"><a href="./car-list.html">Van Leasing</a></li>
+            <li id="contact-us" class="header-item"><a href="./about-us.html">Contact Us</a></li>
+            <li id="about-us" class="header-item current-page"><a href="./about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="about-main">
+
+    <!-- Big orange site name at the top of the page -->
+    <h1 class="about-title">Ling's Cars</h1>
+
+    <!-- Description box with a short blurb about the company -->
+    <div class="about-box about-description">
+        <p>Ling's cars is europes foremost car leasing service... yada yada Something Something...</p>
+    </div>
+
+    <!-- Side by side on desktop, stacked on mobile -->
+    <div class="about-info-row">
+
+        <!-- Left box with the company's address -->
+        <div class="about-box">
+            <h2 class="about-box-title">Address Info:</h2>
+        </div>
+
+        <!-- Right box with contact details -->
+        <div class="about-box">
+            <h2 class="about-box-title">Contact Info:</h2>
+        </div>
+
+    </div>
+
+</main>
+
+<footer></footer>
+
+</body>
+</html>
