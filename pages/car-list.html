@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Car List</title>
+
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/header.css">
+
+<style>
+html {
+    background-color: var(--foreground);
+}
+
+main {
+    background-color: var(--background);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* TOP SECTION (FILTER + HERO) */
+.top-section {
+    display: flex;
+    gap: 30px;
+}
+
+/* FILTER PANEL */
+.filters {
+    background-color: var(--foreground);
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.filters h3 {
+    color: var(--primary-color);
+}
+
+.filters input,
+.filters select,
+.filters button {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid var(--text-color);
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+.filters button {
+    cursor: pointer;
+}
+
+.filters button:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* HERO IMAGE */
+.hero {
+    flex: 1;
+    position: relative;
+}
+
+.hero img {
+    width: 100%;
+    height: 410px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.hero h2 {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--primary-color);
+    font-size: 2rem;
+}
+
+.hero p {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--foreground);
+}
+
+th, td {
+    border: 2px solid var(--text-color);
+    padding: 12px;
+    text-align: center;
+}
+
+th {
+    color: var(--primary-color);
+}
+
+tr:nth-child(even) {
+    background-color: rgba(255,255,255,0.05);
+}
+
+tr:hover {
+    background-color: var(--primary-color);
+    color: var(--background);
+}
+
+/* MOBILE */
+@media (max-width: 800px) {
+    .top-section {
+        flex-direction: column;
+    }
+
+    .filters {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<main>
+
+<!-- TOP SECTION -->
+<div class="top-section">
+
+    <!-- FILTERS -->
+    <div class="filters">
+        <h3>Filters</h3>
+
+        <label>Max Price</label>
+        <input type="range" min="100" max="2000">
+
+        <label>Make</label>
+        <select>
+            <option>Any</option>
+            <option>Toyota</option>
+            <option>Honda</option>
+            <option>Ford</option>
+        </select>
+
+        <label>Model</label>
+        <select>
+            <option>Any</option>
+        </select>
+
+        <label>Type</label>
+        <select>
+            <option>Any</option>
+            <option>Sedan</option>
+            <option>SUV</option>
+        </select>
+
+        <button>Search</button>
+    </div>
+
+    <!-- HERO IMAGE -->
+    <div class="hero">
+        <img src="../img/Nissan_versa.png" alt="Nissan Versa">
+        <h2>Nissan Versa</h2>
+        <p>$999/mo</p>
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-container">
+<table>
+    <thead>
+        <tr>
+            <th>Car Name</th>
+            <th>MPG (City)</th>
+            <th>MPG (HW)</th>
+            <th>Cost</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>Nissan Versa</td><td>27</td><td>35</td><td>$999/mo</td></tr>
+        <tr><td>Toyota Corolla</td><td>30</td><td>38</td><td>$899/mo</td></tr>
+        <tr><td>Honda Civic</td><td>31</td><td>40</td><td>$950/mo</td></tr>
+        <tr><td>Ford Focus</td><td>26</td><td>34</td><td>$870/mo</td></tr>
+        <tr><td>Chevy Malibu</td><td>29</td><td>36</td><td>$910/mo</td></tr>
+    </tbody>
+</table>
+</div>
+
+</main>
+
+</body>
+</html>
