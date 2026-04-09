@@ -1,31 +1,31 @@
-/* ─────────────────────────────────────────
-   About Us — Mobile-first stylesheet
-   Base styles target ~375px.
-   Desktop overrides start at min-width: 768px.
-───────────────────────────────────────── */
-
 /* ── Page wrapper ── */
 .about-main {
+    box-sizing: border-box;
+    width: 100vw;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 25px;
     background-color: var(--background);
     color: var(--text-color);
     min-height: 100vh;
-    padding: 1.5rem 1rem 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+}
+
+/* Constrain all direct children to a consistent content width */
+.about-main > * {
+    width: 80vw;
 }
 
 /* ── "Ling's Cars" title ── */
 .about-title {
     color: var(--primary-color);
-    /* Scales smoothly from mobile to desktop without a media query */
     font-size: clamp(2.5rem, 10vw, 7rem);
     text-transform: uppercase;
     text-align: center;
     letter-spacing: 0.08em;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     line-height: 1;
-    margin-bottom: 0.5rem;
 }
 
 /* ── Shared box style (description, address, contact) ── */
@@ -33,7 +33,6 @@
     background-color: var(--foreground);
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
-    /* Tall enough to feel substantial even with placeholder content */
     min-height: 160px;
 }
 
@@ -56,10 +55,10 @@
 }
 
 /* ── Address / Contact row ── */
-/* Mobile: stacked vertically */
+/* Mobile: single column */
 .about-info-row {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 1rem;
 }
 
@@ -68,11 +67,6 @@
 ───────────────────────────────────────── */
 @media (min-width: 768px) {
 
-    .about-main {
-        padding: 2rem 5vw 4rem;
-        gap: 1.5rem;
-    }
-
     .about-box {
         padding: 1.75rem 2rem;
         min-height: 220px;
@@ -80,11 +74,17 @@
 
     /* Address and Contact sit side by side */
     .about-info-row {
-        flex-direction: row;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Small screen adjustments */
+@media (max-width: 600px) {
+    .about-main {
+        padding: 1rem 1rem 3rem;
     }
 
-    /* Each info box takes up equal space */
-    .about-info-row .about-box {
-        flex: 1;
+    .about-main > * {
+        width: 100%;
     }
 }

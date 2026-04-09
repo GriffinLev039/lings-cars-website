@@ -1,9 +1,3 @@
-/* ─────────────────────────────────────────
-   Car Details — Mobile-first stylesheet
-   Base styles target ~375px.
-   Desktop overrides start at min-width: 768px.
-───────────────────────────────────────── */
-
 /* ── Page wrapper ── */
 .car-details-main {
     box-sizing: border-box;
@@ -23,11 +17,16 @@
     width: 80vw;
 }
 
+/* ── Breadcrumb + title wrapper ── */
+.car-header {
+    display: grid;
+    gap: 0.25rem;
+}
+
 /* ── Breadcrumb ── */
 .breadcrumb {
     font-size: 0.8rem;
     color: var(--text-color);
-    margin-bottom: 0;
 }
 
 /* ── Car title ── */
