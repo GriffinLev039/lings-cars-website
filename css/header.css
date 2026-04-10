@@ -45,7 +45,7 @@ header nav li a {
 
 
 #header-container>li:hover {
-    background-color: var(--text-color);
+    background-color: var(--primary-color);
     transition: all 0.25s ease-in-out;
 }
 
