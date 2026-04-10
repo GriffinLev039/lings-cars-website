@@ -19,15 +19,28 @@
     padding: 30px;
     width: 60%;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 20px;
 }
 
-.summary-box h2,
-.summary-box h3 {
+.summary-box h2 {
+    grid-column: span 2;
     margin-bottom: 10px;
+}
+.summary-box h3 {
+    grid-column: span 2;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .summary-box p {
     margin: 5px 0;
+}
+
+.summary-box hr {
+    grid-column: span 2;
+    width: 100%;
 }
 
 .browse-btn {

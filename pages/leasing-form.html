@@ -24,6 +24,7 @@
 
     <script src="../js/hamburger-handler.js" defer></script>
     <!-- This connects a JavaScript file that controls the hamburger menu functionality, and "defer" ensures it runs after the HTML is loaded -->
+    <script src="../js/leasing-validation.js" defer></script>
 </head>
 
 <body>
@@ -96,27 +97,27 @@
 
         <label for="term">Lease Term</label>
 
-        <input type="text" id="term" placeholder="N/A"  class="error">
+        <input type="text" id="term" placeholder="65 months">
         <!-- This input field allows entry of lease term, and the "error" class visually highlights it as invalid -->
 
         <label for="budget">Monthly Budget</label>
         
-        <input type="text" id="budget" placeholder="N/A"  class="error">
+        <input type="text" id="budget" placeholder="$1000">
         <!-- This input field allows the user to enter their budget and is currently marked as an error state -->
 
         <label for="down">Down Payment</label>
         
-        <input type="text" id="down" placeholder="N/A"  class="error">
+        <input type="text" id="down" placeholder="$2000">
         <!-- This input field allows the user to enter a down payment amount and is marked as invalid -->
 
         <label for="credit">Credit Score</label>
         
-        <input type="text" id="credit" placeholder="N/A"  class="error">
+        <input type="text" id="credit" placeholder="780">
         <!-- This input field allows the user to enter their credit score and is visually flagged as incorrect -->
 
         <button type="submit">Submit Application</button>
         
-        <p class="error-text">
+        <p class="error-text" id="error-msg" style="display: none;">
             Please Enter a Valid Input in the Highlighted Fields!!
         </p>
         

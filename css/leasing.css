@@ -18,19 +18,24 @@
 .leasing-form {
     width: 100%;
     max-width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px 16px;
 }
 
 /* This styles all labels */
 .leasing-form label {
     color: var(--text-color);
     font-size: 0.9rem;
+    text-align: right;
+    /* This aligns the label text to the right so it sits closer to the input */
+
+    align-self: center;
 }
 
 /* This styles all input fields */
 .leasing-form input {
+    width: 100%;
     padding: 10px;
     border-radius: 8px;
     border: none;
@@ -44,6 +49,7 @@ input.error {
 
 /* This styles the submit button */
 .leasing-form button {
+    grid-column: span 2;
     margin-top: 15px;
     padding: 12px;
     border-radius: 10px;
@@ -56,6 +62,7 @@ input.error {
 
 /* error test*/
 .error-text {
+    grid-column: span 2;
     color: red;
     font-size: 0.85rem;
 }
