@@ -39,6 +39,7 @@
 
         #searchContainer {
             display: flex;
+            position: relative;
             gap: 0.7rem;
             width: clamp(80vw, 70%, 100%);
         }
@@ -76,6 +77,33 @@
             background-color: var(--primary-color);
             border-color: var(--background);
         }
+
+
+        #search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--foreground);
+            border: 1px solid var(--text-color);
+            border-radius: 0 0 20px 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            z-index: 100;
+            display: none;
+        }
+
+        #search-suggestions li {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        #search-suggestions li:hover {
+            color: var(--primary-color);
+        }
+
 
         /* HERO SECTION */
 
@@ -373,60 +401,9 @@
     <main>
         <h1>Ling's Cars</h1>
         <form id="searchContainer" action="./pages/car-list.html" method="get">
-            <input type="text" name="make" placeholder="Search a car..." list="search-suggestions"><button
-                id="searchBtn" type="submit">Search</button>
-            <datalist id="search-suggestions">
-                <option value="Toyota">
-                <option value="Honda">
-                <option value="Chevrolet">
-                <option value="Ford">
-                <option value="Mercedes-Benz">
-                <option value="Jeep">
-                <option value="BMW">
-                <option value="Porsche">
-                <option value="Subaru">
-                <option value="Nissan">
-                <option value="Cadillac">
-                <option value="Volkswagen">
-                <option value="Lexus">
-                <option value="Audi">
-                <option value="Ferrari">
-                <option value="Volvo">
-                <option value="Jaguar">
-                <option value="GMC">
-                <option value="Buick">
-                <option value="Acura">
-                <option value="Bentley">
-                <option value="Dodge">
-                <option value="Hyundai">
-                <option value="Lincoln">
-                <option value="Mazda">
-                <option value="Land Rover">
-                <option value="Tesla">
-                <option value="Ram Trucks">
-                <option value="Kia">
-                <option value="Chrysler">
-                <option value="Pontiac">
-                <option value="Infiniti">
-                <option value="Mitsubishi">
-                <option value="Oldsmobile">
-                <option value="Maserati">
-                <option value="Aston Martin">
-                <option value="Bugatti">
-                <option value="Fiat">
-                <option value="Mini">
-                <option value="Alfa Romeo">
-                <option value="Saab">
-                <option value="Genesis">
-                <option value="Suzuki">
-                <option value="Studebaker">
-                <option value="Renault">
-                <option value="Peugeot">
-                <option value="Daewoo">
-                <option value="Hudson">
-                <option value="Citroen">
-                <option value="MG">
-            </datalist>
+            <input type="text" name="make" placeholder="Search a car...">
+            <ul id="search-suggestions"></ul>
+            <button id="searchBtn" type="submit">Search</button>
         </form>
         <div id="hero">
             <div id="left-scrolling">
@@ -444,7 +421,7 @@
             <div id="primary-image">
                 <h2 id="hero-car-name">2026 Nissan Versa</h2>
                 <p id="hero-car-price">$999/mo</p>
-                    <button id="hero-view-details">View Details</button>
+                <button id="hero-view-details">View Details</button>
                 <img src="./img/red-nissan.png" />
             </div>
         </div>
@@ -836,94 +813,6 @@
                 });
             }
         }
-        function displaySearch() {
-            // CLEAR OUTPUT
-            let searchInput = document.querySelector('input');
-            let searchText = searchInput.textContent.split(' ');
-
-            if (searchText.length == 0) {
-                // Handle empty text
-            }
-
-            if (isNaN(searchText[0])) {
-                // IF FIRST ELEMENT IS WORD
-                if (searchText.length == 1) {
-                    // First word stuff
-                } else if (searchText.length == 2) {
-                    // Second word stuff
-                } else {
-                    // Error
-                }
-            } else {
-                // IF FIRST ELEMENT IS NUMBER
-                if (searchText.length == 1) {
-                    // First word stuff
-                } else if (searchText.length == 2) {
-                    // Second word stuff
-                } else if (searchText.length == 3) {
-                    // Third word stuff
-                } else {
-                    // Error
-                }
-
-            }
-
-            if (searchText.length == 1) {
-
-            } else if (searchText.length == 2) {
-                // Second word stuff
-            } else if (searchText.length == 3) {
-                // Third word stuff
-            } else {
-                // Error
-            }
-
-
-            // If input not finalized disable search button
-            // Clear current search display
-            // Ensure object is visible
-            // Get current input
-            // Split by space
-            // If first word
-            // If current input is number
-            // Suggest 'year + make + model'
-            //Else suggest make + model
-            // If not found display 'no results' and disable search button
-            // If second word 
-            // If first word was number
-            // Suggest make
-            // Else
-            // Suggest model
-            // If third word
-            // If first word was number
-            // Suggest make
-            // Else
-            // Show 'no results'
-        }
-        function hideSearch() {
-            // Hide suggestion thingy
-        }
-        /*
-            For brand in data
-            For cars in brand
-            Create object and add to array
-        */
-        // First word should be brand or year
-        // If number, suggest years
-        // If word, suggest makes
-        // If first word is word, suggest models
-        // else, suggest makes
-        // If third word, and first word is number, suggest makes
-        // else, show not found
-        // If not found, show not found ofc
-        /* 
-            Data Structure:
-            Array of car objects with:
-                - Brand
-                - Model
-                - Year
-        */
-
 
         let viewDetailsBtn = document.getElementById('hero-view-details');
         viewDetailsBtn.addEventListener('click', () => {
@@ -931,6 +820,48 @@
             let pos = Array.from(thumbnailContainer.children).indexOf(selected);
             let make = dataArr[pos]['make'];
             window.location.href = `./pages/car-details.html?make=${make}`;
+        });
+
+        const searchInput = document.querySelector('input[name="make"]');
+        const suggestionList = document.getElementById('search-suggestions');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            suggestionList.innerHTML = '';
+
+            if (!query) {
+                suggestionList.style.display = 'none';
+                return;
+            }
+
+            const matches = carData.filter(car =>
+                `${car.year} ${car.make} ${car.model}`.toLowerCase().includes(query) ||
+                car.make.toLowerCase().startsWith(query) ||
+                car.model.toLowerCase().startsWith(query)
+            ).slice(0, 8);
+
+            if (matches.length === 0) {
+                suggestionList.innerHTML = '<li>No Results Found.</li>';
+                return;
+            }
+
+            for (const car of matches) {
+                const li = document.createElement('li');
+                li.textContent = `${car.year} ${car.make} ${car.model}`;
+                li.addEventListener('click', () => {
+                    searchInput.value = li.textContent;
+                    suggestionList.style.display = 'none';
+                });
+                suggestionList.appendChild(li);
+            }
+
+            suggestionList.style.display = 'block';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#searchContainer')) {
+                suggestionList.style.display = 'none';
+            }
         });
     })();
 
