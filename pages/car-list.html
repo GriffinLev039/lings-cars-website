@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/header.css">
 
+<script src="../js/hamburger-handler.js" defer></script>
+
 <style>
 html {
     background-color: var(--foreground);
@@ -22,13 +24,13 @@ main {
     gap: 30px;
 }
 
-/* TOP SECTION (FILTER + HERO) */
+/* TOP */
 .top-section {
     display: flex;
     gap: 30px;
 }
 
-/* FILTER PANEL */
+/* FILTERS */
 .filters {
     background-color: var(--foreground);
     padding: 20px;
@@ -53,16 +55,13 @@ main {
     color: var(--text-color);
 }
 
-.filters button {
-    cursor: pointer;
-}
-
 .filters button:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
+    cursor: pointer;
 }
 
-/* HERO IMAGE */
+/* HERO */
 .hero {
     flex: 1;
     position: relative;
@@ -70,7 +69,7 @@ main {
 
 .hero img {
     width: 100%;
-    height: 410px;
+    height: 60vh;
     object-fit: cover;
     border-radius: 15px;
 }
@@ -80,7 +79,6 @@ main {
     top: 20px;
     left: 20px;
     color: var(--primary-color);
-    font-size: 2rem;
 }
 
 .hero p {
@@ -88,37 +86,54 @@ main {
     bottom: 20px;
     left: 20px;
     color: var(--primary-color);
-    font-size: 1.5rem;
 }
 
-/* TABLE */
-.table-container {
-    overflow-x: auto;
+/* CAR GRID */
+.car-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* CARD */
+.car-card {
     background-color: var(--foreground);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
-th, td {
-    border: 2px solid var(--text-color);
-    padding: 12px;
-    text-align: center;
+.car-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
 }
 
-th {
+.car-info {
+    padding: 10px;
+}
+
+.car-info h3 {
     color: var(--primary-color);
 }
 
-tr:nth-child(even) {
-    background-color: rgba(255,255,255,0.05);
+.car-info p {
+    margin: 3px 0;
 }
 
-tr:hover {
+/* BUTTON */
+.view-btn {
+    margin-top: auto;
+    padding: 10px;
+    border: none;
     background-color: var(--primary-color);
     color: var(--background);
+    cursor: pointer;
+}
+
+.view-btn:hover {
+    opacity: 0.85;
 }
 
 /* MOBILE */
@@ -135,25 +150,28 @@ tr:hover {
 </head>
 
 <body>
-<header>
-        <div id="hburger-container">
-            <button id="hamburger-icon">=</button>
-            <a id="logo" href="../index.html">LOGO</a>
-            <div id="invis-spacer"></div>
-        </div>
 
-        <nav>
-            <ul id="header-container">
-                <li id="car-leasing" class="header-item"><a href="./car-list.html">Car Leasing</a></li>
-                <li id="van-leasing" class="header-item"><a href="./car-list.html">Van Leasing</a></li>
-                <li id="contact-us" class="header-item"><a href="./about-us.html">Contact Us</a></li>
-                <li id="about-us" class="header-item"><a href="./about-us.html">About Us</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- HEADER -->
+<header>
+    <div id="hburger-container">
+        <button id="hamburger-icon">=</button>
+        <a id="Car Listing" href="../index.html">LOGO</a>
+        <div id="invis-spacer"></div>
+    </div>
+
+    <nav>
+        <ul id="header-container">
+            <li class="header-item current-page"><a href="./car-list.html">Car Leasing</a></li>
+            <li class="header-item"><a href="./car-list.html">Van Leasing</a></li>
+            <li class="header-item"><a href="./about-us.html">Contact Us</a></li>
+            <li class="header-item"><a href="./about-us.html">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+
 <main>
 
-<!-- TOP SECTION -->
+<!-- TOP -->
 <div class="top-section">
 
     <!-- FILTERS -->
@@ -168,12 +186,6 @@ tr:hover {
             <option>Any</option>
             <option>Toyota</option>
             <option>Honda</option>
-            <option>Ford</option>
-        </select>
-
-        <label>Model</label>
-        <select>
-            <option>Any</option>
         </select>
 
         <label>Type</label>
@@ -186,7 +198,7 @@ tr:hover {
         <button>Search</button>
     </div>
 
-    <!-- HERO IMAGE -->
+    <!-- HERO -->
     <div class="hero">
         <img src="../img/red-nissan.png" alt="Nissan Versa">
         <h2>Nissan Versa</h2>
@@ -195,28 +207,51 @@ tr:hover {
 
 </div>
 
-<!-- TABLE -->
-<div class="table-container">
-<table>
-    <thead>
-        <tr>
-            <th>Car Name</th>
-            <th>MPG (City)</th>
-            <th>MPG (HW)</th>
-            <th>Cost</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr><td>Nissan Versa</td><td>27</td><td>35</td><td>$999/mo</td></tr>
-        <tr><td>Toyota Corolla</td><td>30</td><td>38</td><td>$899/mo</td></tr>
-        <tr><td>Honda Civic</td><td>31</td><td>40</td><td>$950/mo</td></tr>
-        <tr><td>Ford Focus</td><td>26</td><td>34</td><td>$870/mo</td></tr>
-        <tr><td>Chevy Malibu</td><td>29</td><td>36</td><td>$910/mo</td></tr>
-    </tbody>
-</table>
+<!-- CAR LIST -->
+<div class="car-container">
+
+    <div class="car-card">
+        <img src="../img/Nissan_versa.png">
+        <div class="car-info">
+            <h3>Nissan Versa</h3>
+            <p>MPG City: 27</p>
+            <p>MPG HW: 35</p>
+            <p>$999/mo</p>
+        </div>
+        <button class="view-btn" onclick="goToDetails()">View Details</button>
+    </div>
+
+    <div class="car-card">
+        <img src="../img/Toyota_001.jpg">
+        <div class="car-info">
+            <h3>Toyota Corolla</h3>
+            <p>MPG City: 30</p>
+            <p>MPG HW: 38</p>
+            <p>$899/mo</p>
+        </div>
+        <button class="view-btn" onclick="goToDetails()">View Details</button>
+    </div>
+
+    <div class="car-card">
+        <img src="../img/Honda_001.jpg">
+        <div class="car-info">
+            <h3>Honda Civic</h3>
+            <p>MPG City: 31</p>
+            <p>MPG HW: 40</p>
+            <p>$950/mo</p>
+        </div>
+        <button class="view-btn" onclick="goToDetails()">View Details</button>
+    </div>
+
 </div>
 
 </main>
+
+<script>
+function goToDetails() {
+    window.location.href = "./car-details.html";
+}
+</script>
 
 </body>
 </html>
