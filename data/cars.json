@@ -1,0 +1,529 @@
+{
+  "Brands": [
+    {
+      "name": "Toyota",
+      "cars": [
+        {
+          "id": 1,
+          "src": "https://www.edmunds.com/assets/m/cs/blt95cf4db396c717b7/672bda61733622566a9c6cac/2024-toyota-camry-actf34.jpg",
+          "make": "Toyota",
+          "model": "Camry LE Hybrid",
+          "year": "2024",
+          "leaseMonthlyCost": "$279/mo",
+          "mpgHW": "53",
+          "mpgCITY": "51"
+        },
+        {
+          "id": 2,
+          "src": "",
+          "make": "Toyota",
+          "model": "Corolla LE",
+          "year": "2026",
+          "leaseMonthlyCost": "$219/mo",
+          "mpgHW": "41",
+          "mpgCITY": "32"
+        },
+        {
+          "id": 3,
+          "src": "",
+          "make": "Toyota",
+          "model": "RAV4 LE",
+          "year": "2026",
+          "leaseMonthlyCost": "$299/mo",
+          "mpgHW": "44",
+          "mpgCITY": "44"
+        },
+        {
+          "id": 4,
+          "src": "",
+          "make": "Toyota",
+          "model": "Tacoma SR5",
+          "year": "2026",
+          "leaseMonthlyCost": "$379/mo",
+          "mpgHW": "24",
+          "mpgCITY": "20"
+        },
+        {
+          "id": 5,
+          "src": "",
+          "make": "Toyota",
+          "model": "Highlander Hybrid LE",
+          "year": "2026",
+          "leaseMonthlyCost": "$489/mo",
+          "mpgHW": "35",
+          "mpgCITY": "36"
+        },
+        {
+          "id": 6,
+          "src": "",
+          "make": "Toyota",
+          "model": "Prius LE",
+          "year": "2026",
+          "leaseMonthlyCost": "$289/mo",
+          "mpgHW": "57",
+          "mpgCITY": "57"
+        },
+        {
+          "id": 7,
+          "src": "",
+          "make": "Toyota",
+          "model": "Tundra SR5",
+          "year": "2026",
+          "leaseMonthlyCost": "$529/mo",
+          "mpgHW": "20",
+          "mpgCITY": "18"
+        },
+        {
+          "id": 8,
+          "src": "",
+          "make": "Toyota",
+          "model": "4Runner SR5",
+          "year": "2026",
+          "leaseMonthlyCost": "$459/mo",
+          "mpgHW": "22",
+          "mpgCITY": "17"
+        },
+        {
+          "id": 9,
+          "src": "",
+          "make": "Toyota",
+          "model": "Venza XLE",
+          "year": "2026",
+          "leaseMonthlyCost": "$389/mo",
+          "mpgHW": "40",
+          "mpgCITY": "40"
+        },
+        {
+          "id": 10,
+          "src": "",
+          "make": "Toyota",
+          "model": "Crown Platinum",
+          "year": "2026",
+          "leaseMonthlyCost": "$549/mo",
+          "mpgHW": "43",
+          "mpgCITY": "41"
+        }
+      ]
+    },
+    {
+      "name": "Honda",
+      "cars": [
+        {
+          "id": 1,
+          "src": "https://media.ed.edmunds-media.com/honda/civic/2026/oem/2026_honda_civic_sedan_si_fq_oem_1_1600.jpg",
+          "make": "Honda",
+          "model": "Civic LX",
+          "year": "2026",
+          "leaseMonthlyCost": "$209/mo",
+          "mpgHW": "42",
+          "mpgCITY": "31"
+        },
+        {
+          "id": 2,
+          "src": "",
+          "make": "Honda",
+          "model": "Accord LX Hybrid",
+          "year": "2026",
+          "leaseMonthlyCost": "$249/mo",
+          "mpgHW": "44",
+          "mpgCITY": "51"
+        },
+        {
+          "id": 3,
+          "src": "",
+          "make": "Honda",
+          "model": "CR-V EX",
+          "year": "2026",
+          "leaseMonthlyCost": "$319/mo",
+          "mpgHW": "38",
+          "mpgCITY": "28"
+        },
+        {
+          "id": 4,
+          "src": "",
+          "make": "Honda",
+          "model": "HR-V LX",
+          "year": "2026",
+          "leaseMonthlyCost": "$229/mo",
+          "mpgHW": "34",
+          "mpgCITY": "28"
+        },
+        {
+          "id": 5,
+          "src": "",
+          "make": "Honda",
+          "model": "Pilot EX-L",
+          "year": "2026",
+          "leaseMonthlyCost": "$449/mo",
+          "mpgHW": "27",
+          "mpgCITY": "20"
+        },
+        {
+          "id": 6,
+          "src": "",
+          "make": "Honda",
+          "model": "Odyssey EX",
+          "year": "2026",
+          "leaseMonthlyCost": "$419/mo",
+          "mpgHW": "28",
+          "mpgCITY": "19"
+        },
+        {
+          "id": 7,
+          "src": "",
+          "make": "Honda",
+          "model": "Ridgeline RTL",
+          "year": "2026",
+          "leaseMonthlyCost": "$469/mo",
+          "mpgHW": "26",
+          "mpgCITY": "19"
+        },
+        {
+          "id": 8,
+          "src": "",
+          "make": "Honda",
+          "model": "Passport EX-L",
+          "year": "2026",
+          "leaseMonthlyCost": "$399/mo",
+          "mpgHW": "27",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 9,
+          "src": "",
+          "make": "Honda",
+          "model": "Civic Hybrid Sport",
+          "year": "2026",
+          "leaseMonthlyCost": "$259/mo",
+          "mpgHW": "51",
+          "mpgCITY": "47"
+        },
+        {
+          "id": 10,
+          "src": "",
+          "make": "Honda",
+          "model": "CR-V Hybrid Sport",
+          "year": "2026",
+          "leaseMonthlyCost": "$349/mo",
+          "mpgHW": "40",
+          "mpgCITY": "43"
+        }
+      ]
+    },
+    {
+      "name": "Ford",
+      "cars": [
+        {
+          "id": 1,
+          "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ford_Bronco_%286th_generation%29_1X7A0874.jpg/960px-Ford_Bronco_%286th_generation%29_1X7A0874.jpg",
+          "make": "Ford",
+          "model": "Bronco Sport",
+          "year": "2025",
+          "leaseMonthlyCost": "$269/mo",
+          "mpgHW": "28",
+          "mpgCITY": "25"
+        },
+        {
+          "id": 2,
+          "src": "",
+          "make": "Ford",
+          "model": "F-150 XLT",
+          "year": "2026",
+          "leaseMonthlyCost": "$399/mo",
+          "mpgHW": "26",
+          "mpgCITY": "20"
+        },
+        {
+          "id": 3,
+          "src": "",
+          "make": "Ford",
+          "model": "Escape ST-Line",
+          "year": "2026",
+          "leaseMonthlyCost": "$279/mo",
+          "mpgHW": "33",
+          "mpgCITY": "26"
+        },
+        {
+          "id": 4,
+          "src": "",
+          "make": "Ford",
+          "model": "Explorer XLT",
+          "year": "2026",
+          "leaseMonthlyCost": "$389/mo",
+          "mpgHW": "27",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 5,
+          "src": "",
+          "make": "Ford",
+          "model": "Mustang EcoBoost",
+          "year": "2026",
+          "leaseMonthlyCost": "$349/mo",
+          "mpgHW": "32",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 6,
+          "src": "",
+          "make": "Ford",
+          "model": "Edge SEL",
+          "year": "2025",
+          "leaseMonthlyCost": "$329/mo",
+          "mpgHW": "29",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 7,
+          "src": "",
+          "make": "Ford",
+          "model": "Maverick XLT Hybrid",
+          "year": "2026",
+          "leaseMonthlyCost": "$299/mo",
+          "mpgHW": "42",
+          "mpgCITY": "42"
+        },
+        {
+          "id": 8,
+          "src": "",
+          "make": "Ford",
+          "model": "Ranger XLT",
+          "year": "2026",
+          "leaseMonthlyCost": "$359/mo",
+          "mpgHW": "26",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 9,
+          "src": "",
+          "make": "Ford",
+          "model": "Expedition XLT",
+          "year": "2026",
+          "leaseMonthlyCost": "$589/mo",
+          "mpgHW": "22",
+          "mpgCITY": "17"
+        },
+        {
+          "id": 10,
+          "src": "",
+          "make": "Ford",
+          "model": "F-150 Lightning Pro",
+          "year": "2026",
+          "leaseMonthlyCost": "$499/mo",
+          "mpgHW": "N/A",
+          "mpgCITY": "N/A"
+        }
+      ]
+    },
+    {
+      "name": "Mazda",
+      "cars": [
+        {
+          "id": 1,
+          "src": "https://hips.hearstapps.com/hmg-prod/images/2025-mazda-cx-50-hybrid-107-6732abd99f334.jpg?crop=0.579xw:0.490xh;0.356xw,0.469xh&resize=1200:*",
+          "make": "Mazda",
+          "model": "CX-50 2.5 S",
+          "year": "2026",
+          "leaseMonthlyCost": "$299/mo",
+          "mpgHW": "33",
+          "mpgCITY": "24"
+        },
+        {
+          "id": 2,
+          "src": "",
+          "make": "Mazda",
+          "model": "Mazda3 Sedan",
+          "year": "2026",
+          "leaseMonthlyCost": "$199/mo",
+          "mpgHW": "37",
+          "mpgCITY": "26"
+        },
+        {
+          "id": 3,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-5 2.5 S",
+          "year": "2026",
+          "leaseMonthlyCost": "$269/mo",
+          "mpgHW": "31",
+          "mpgCITY": "25"
+        },
+        {
+          "id": 4,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-30 2.5 S",
+          "year": "2026",
+          "leaseMonthlyCost": "$249/mo",
+          "mpgHW": "33",
+          "mpgCITY": "26"
+        },
+        {
+          "id": 5,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-90 PHEV",
+          "year": "2026",
+          "leaseMonthlyCost": "$549/mo",
+          "mpgHW": "56",
+          "mpgCITY": "64"
+        },
+        {
+          "id": 6,
+          "src": "",
+          "make": "Mazda",
+          "model": "Mazda3 Hatchback",
+          "year": "2026",
+          "leaseMonthlyCost": "$229/mo",
+          "mpgHW": "35",
+          "mpgCITY": "26"
+        },
+        {
+          "id": 7,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-70 Turbo",
+          "year": "2026",
+          "leaseMonthlyCost": "$479/mo",
+          "mpgHW": "29",
+          "mpgCITY": "22"
+        },
+        {
+          "id": 8,
+          "src": "",
+          "make": "Mazda",
+          "model": "MX-5 Miata Sport",
+          "year": "2026",
+          "leaseMonthlyCost": "$319/mo",
+          "mpgHW": "36",
+          "mpgCITY": "26"
+        },
+        {
+          "id": 9,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-50 Hybrid",
+          "year": "2026",
+          "leaseMonthlyCost": "$349/mo",
+          "mpgHW": "37",
+          "mpgCITY": "43"
+        },
+        {
+          "id": 10,
+          "src": "",
+          "make": "Mazda",
+          "model": "CX-5 Turbo",
+          "year": "2026",
+          "leaseMonthlyCost": "$329/mo",
+          "mpgHW": "31",
+          "mpgCITY": "22"
+        }
+      ]
+    },
+    {
+      "name": "Nissan",
+      "cars": [
+        {
+          "id": 1,
+          "src": "https://cdn.motor1.com/images/mgl/Rq2Yw3/s3/2025-nissan-versa.webp",
+          "make": "Nissan",
+          "model": "Versa",
+          "year": "2026",
+          "leaseMonthlyCost": "$229/mo",
+          "mpgHW": "27",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 2,
+          "src": "",
+          "make": "Nissan",
+          "model": "Sentra SV",
+          "year": "2026",
+          "leaseMonthlyCost": "$215/mo",
+          "mpgHW": "39",
+          "mpgCITY": "29"
+        },
+        {
+          "id": 3,
+          "src": "",
+          "make": "Nissan",
+          "model": "Rogue SV AWD",
+          "year": "2026",
+          "leaseMonthlyCost": "$279/mo",
+          "mpgHW": "33",
+          "mpgCITY": "27"
+        },
+        {
+          "id": 4,
+          "src": "",
+          "make": "Nissan",
+          "model": "Altima SR",
+          "year": "2026",
+          "leaseMonthlyCost": "$249/mo",
+          "mpgHW": "39",
+          "mpgCITY": "28"
+        },
+        {
+          "id": 5,
+          "src": "",
+          "make": "Nissan",
+          "model": "Pathfinder SV",
+          "year": "2026",
+          "leaseMonthlyCost": "$229/mo",
+          "mpgHW": "26",
+          "mpgCITY": "20"
+        },
+        {
+          "id": 6,
+          "src": "",
+          "make": "Nissan",
+          "model": "Murano SL AWD",
+          "year": "2026",
+          "leaseMonthlyCost": "$429/mo",
+          "mpgHW": "29",
+          "mpgCITY": "21"
+        },
+        {
+          "id": 7,
+          "src": "",
+          "make": "Nissan",
+          "model": "Frontier SV",
+          "year": "2026",
+          "leaseMonthlyCost": "$319/mo",
+          "mpgHW": "24",
+          "mpgCITY": "18"
+        },
+        {
+          "id": 8,
+          "src": "",
+          "make": "Nissan",
+          "model": "Armada SL",
+          "year": "2026",
+          "leaseMonthlyCost": "$589/mo",
+          "mpgHW": "19",
+          "mpgCITY": "14"
+        },
+        {
+          "id": 9,
+          "src": "",
+          "make": "Nissan",
+          "model": "Kicks SR",
+          "year": "2026",
+          "leaseMonthlyCost": "$199/mo",
+          "mpgHW": "36",
+          "mpgCITY": "31"
+        },
+        {
+          "id": 10,
+          "src": "",
+          "make": "Nissan",
+          "model": "Z Sport",
+          "year": "2026",
+          "leaseMonthlyCost": "$499/mo",
+          "mpgHW": "28",
+          "mpgCITY": "19"
+        }
+      ]
+    }
+  ]
+}

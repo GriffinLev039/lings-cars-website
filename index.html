@@ -17,13 +17,13 @@
 
         main {
             box-sizing: border-box;
-            padding: 50px;
+            /* padding: 50px; */
             width: 100vw;
-            height: 100%;
-            display: flex;
-            flex-flow: column;
-            align-items: center;
-            gap: 25px;
+            /* height: 100vh; */
+            display: grid;
+            grid-template-columns: 1fr;
+            place-items: center;
+            grid-template-rows: auto 6rem 25rem 22rem auto;
             background-color: var(--background);
         }
 
@@ -31,7 +31,8 @@
             color: var(--primary-color);
             font-size: 4.8rem;
             text-align: center;
-            margin-bottom: 1rem;
+            margin-bottom: 0;
+            margin-top: .5rem;
         }
 
         /* SEARCHBAR SECTION */
@@ -47,7 +48,7 @@
             text-align: center;
             height: 3rem;
             background-color: var(--foreground);
-            border: 2px solid var(--text-color);
+            border: 1px solid var(--text-color);
             color: var(--text-color);
         }
 
@@ -59,7 +60,7 @@
             font-size: .8rem;
             cursor: pointer;
             background-color: var(--foreground);
-            border: 2px solid var(--text-color);
+            border: 1px solid var(--text-color);
             color: var(--text-color);
         }
 
@@ -82,11 +83,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            width: 100dvw;
-            height: 60dvh;
-            /* height: 40%; */
-            margin: 1rem;
-            margin-bottom: 5rem;
+            width: 90%;
+            height: 100%;
             user-select: none;
         }
 
@@ -97,9 +95,10 @@
             gap: 15px;
             overflow-y: scroll;
             background-color: var(--foreground);
+            width: 11%;
             max-width: 30%;
             max-height: 100%;
-            padding: 10px;
+            padding: 18px 0px;
         }
 
         #left-scrolling img {
@@ -117,10 +116,9 @@
             position: relative;
             /* background-image: url("./img/red-nissan.png"); */
             background-size: cover;
-            width: 70%;
+            width: 78%;
             height: 100%;
             box-sizing: border-box;
-            padding: 25px;
         }
 
         #primary-image img {
@@ -136,13 +134,15 @@
             color: var(--primary-color);
             font-size: 2.8rem;
             text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+            margin: .7rem;
         }
 
         #primary-image p {
             position: absolute;
             bottom: 0;
             left: 0;
-            margin: 25px;
+            margin-left: 1.4rem;
+            margin-bottom: 0.4rem;
             font-size: 2rem;
             color: var(--primary-color);
             text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -152,7 +152,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            margin: 25px;
+            margin: .4vh;
             padding: 25px;
             border-radius: 20px;
             font-weight: 900;
@@ -177,7 +177,8 @@
         @media (max-width: 600px) {
             #hero {
                 flex-direction: column-reverse;
-                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
             }
 
             #primary-image {
@@ -186,14 +187,15 @@
             }
 
             #left-scrolling {
-                max-width: none;
+                max-width: 100vw;
                 flex-direction: row;
                 overflow-y: hidden;
                 overflow-x: scroll;
             }
 
             #primary-image button {
-                margin: 2rem;
+                margin: .4rem;
+                margin-right: 1.4rem;
                 padding: 1rem;
             }
 
@@ -220,11 +222,13 @@
             display: flex;
             gap: 1rem;
             overflow-x: scroll;
+            justify-content: space-around;
 
         }
 
         /* CAR DISPLAY CHIP */
         .car-display-chip {
+            box-sizing: content-box;
             min-width: 420px;
             min-height: 320px;
             max-width: 440px;
@@ -247,6 +251,23 @@
             overflow: hidden;
             object-fit: cover;
             border-radius: 10px;
+        }
+
+        .car-display-chip h4 {
+            font-size: 1.4rem;
+        }
+
+        .car-display-chip>div>p {
+            font-size: 0.7rem;
+        }
+
+        .car-display-chip-details-price p:first-child {
+            font-size: 0.5rem;
+        }
+
+        .car-display-chip-details-price p:nth-child(2) {
+            font-size: 1.5rem;
+            color: var(--primary-color);
         }
 
         .car-display-chip * {
@@ -295,6 +316,7 @@
             flex-flow: row wrap;
             gap: 1rem;
             justify-content: center;
+            margin-bottom: 1rem;
         }
 
         .brand-chip {
@@ -350,34 +372,74 @@
     </header>
     <main>
         <h1>Ling's Cars</h1>
-        <form id="searchContainer" action="./pages/car-list.html">
-            <input type="text" placeholder="Search a car..."><button id="searchBtn" type="submit">Search</button>
+        <form id="searchContainer" action="./pages/car-list.html" method="get">
+            <input type="text" name="make" placeholder="Search a car..." list="search-suggestions"><button
+                id="searchBtn" type="submit">Search</button>
+            <datalist id="search-suggestions">
+                <option value="Toyota">
+                <option value="Honda">
+                <option value="Chevrolet">
+                <option value="Ford">
+                <option value="Mercedes-Benz">
+                <option value="Jeep">
+                <option value="BMW">
+                <option value="Porsche">
+                <option value="Subaru">
+                <option value="Nissan">
+                <option value="Cadillac">
+                <option value="Volkswagen">
+                <option value="Lexus">
+                <option value="Audi">
+                <option value="Ferrari">
+                <option value="Volvo">
+                <option value="Jaguar">
+                <option value="GMC">
+                <option value="Buick">
+                <option value="Acura">
+                <option value="Bentley">
+                <option value="Dodge">
+                <option value="Hyundai">
+                <option value="Lincoln">
+                <option value="Mazda">
+                <option value="Land Rover">
+                <option value="Tesla">
+                <option value="Ram Trucks">
+                <option value="Kia">
+                <option value="Chrysler">
+                <option value="Pontiac">
+                <option value="Infiniti">
+                <option value="Mitsubishi">
+                <option value="Oldsmobile">
+                <option value="Maserati">
+                <option value="Aston Martin">
+                <option value="Bugatti">
+                <option value="Fiat">
+                <option value="Mini">
+                <option value="Alfa Romeo">
+                <option value="Saab">
+                <option value="Genesis">
+                <option value="Suzuki">
+                <option value="Studebaker">
+                <option value="Renault">
+                <option value="Peugeot">
+                <option value="Daewoo">
+                <option value="Hudson">
+                <option value="Citroen">
+                <option value="MG">
+            </datalist>
         </form>
         <div id="hero">
             <div id="left-scrolling">
                 <img src="img/red-nissan.png" class="selected">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-                <img src="img/red-nissan.png">
-
+                <img src="img/car-brands/imgs_zip/imgs/Nissan/Nissan_002.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Ford/Ford_000.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/BMW/BMW_000.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Honda/Honda_002.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Audi/Audi_000.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Dodge/Dodge_005.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Tesla/Tesla_000.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Volvo/Volvo_000.jpg">
+                <img src="img/car-brands/imgs_zip/imgs/Subaru/Subaru_000.jpg">
             </div>
             <div id="primary-image">
                 <h2 id="hero-car-name">2026 Nissan Versa</h2>
@@ -402,38 +464,40 @@
                         <hr>
                         <div class="car-display-chip-details-price">
                             <!-- This div will be flex space-between -->
-                            <p>Car Details</p>
-                            <p>Price</p>
+                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                            <p>$200/mo</p>
                         </div>
                     </div>
                 </div>
                 <div class="car-display-chip">
                     <!-- Top half is a car image on cover -->
-                    <img src="./img/red-nissan.png" alt="">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/2025-mazda-cx-50-hybrid-107-6732abd99f334.jpg?crop=0.579xw:0.490xh;0.356xw,0.469xh&resize=1200:*"
+                        alt="">
                     <div>
                         <!-- This is bottom half - content n stuff -->
-                        <h4>2025 Nissan Sentra</h4>
-                        <p>25mpg City | 35mpg HW</p>
+                        <h4>2026 Mazda CX-50</h4>
+                        <p>24mpg City | 33mpg HW</p>
                         <hr>
                         <div class="car-display-chip-details-price">
                             <!-- This div will be flex space-between -->
-                            <p>Car Details</p>
-                            <p>Price</p>
+                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                            <p>$299/mo</p>
                         </div>
                     </div>
                 </div>
                 <div class="car-display-chip">
                     <!-- Top half is a car image on cover -->
-                    <img src="./img/red-nissan.png" alt="">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ford_Bronco_%286th_generation%29_1X7A0874.jpg/960px-Ford_Bronco_%286th_generation%29_1X7A0874.jpg"
+                        alt="">
                     <div>
                         <!-- This is bottom half - content n stuff -->
-                        <h4>2025 Nissan Sentra</h4>
-                        <p>25mpg City | 35mpg HW</p>
+                        <h4>2025 Ford Bronco Sport</h4>
+                        <p>25mpg City | 28mpg HW</p>
                         <hr>
                         <div class="car-display-chip-details-price">
                             <!-- This div will be flex space-between -->
-                            <p>Car Details</p>
-                            <p>Price</p>
+                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                            <p>$269/mo</p>
                         </div>
                     </div>
                 </div>
@@ -664,11 +728,178 @@
 
 </body>
 <script>
-    let chipContainer = document.getElementById('brand-chip-container');
-    for (let child of chipContainer.children) {
-        child.addEventListener('click', ()=>{
-            window.location.href = './pages/car-list.html';
-        });
+    document.addEventListener('DOMContentLoaded', () => {
+
+        let chipContainer = document.getElementById('brand-chip-container');
+        for (let child of chipContainer.children) {
+            child.addEventListener('click', () => {
+                let childImg = child.children[0];
+                window.location.href = `./pages/car-list.html?make=${childImg.alt}`;
+            });
+        }
+    });
+
+    // Carousel Container
+    let thumbnailContainer = document.getElementById('left-scrolling');
+    let mainImage = document.querySelector('#primary-image img');
+    let heroContainer = document.getElementById('hero');
+    let carTitleElement = document.getElementById('hero-car-name');
+    let carPriceElement = document.getElementById('hero-car-price');
+    let dataArr = [];
+    function removeActive() {
+        for (let subImg of thumbnailContainer.children) {
+            subImg.classList.remove('selected');
+        }
     }
+
+    function goNext() {
+        let chosenChild = document.querySelector('.selected');
+        let thumbnails = Array.from(thumbnailContainer.children);
+        let chosenChildPos = thumbnails.indexOf(chosenChild);
+
+        if (chosenChildPos == thumbnails.length - 1) {
+            let pos = 0;
+            removeActive();
+            mainImage.src = thumbnails[0].src;
+            thumbnails[0].classList.add('selected');
+            thumbnailContainer.scrollTo({
+                top: thumbnails[pos].offsetTop - thumbnailContainer.offsetTop,
+                left: thumbnails[pos].offsetLeft - thumbnailContainer.offsetLeft,
+                behavior: 'smooth'
+            }); carTitleElement.textContent = `${dataArr[0].year} ${dataArr[0].make} ${dataArr[0].model}`;
+            carPriceElement.textContent = `${dataArr[0].monthlyCost}`;
+        } else {
+            let pos = chosenChildPos + 1;
+            removeActive();
+            mainImage.src = thumbnails[chosenChildPos + 1].src;
+            thumbnails[chosenChildPos + 1].classList.add('selected');
+            thumbnailContainer.scrollTo({
+                top: thumbnails[pos].offsetTop - thumbnailContainer.offsetTop,
+                left: thumbnails[pos].offsetLeft - thumbnailContainer.offsetLeft,
+                behavior: 'smooth'
+            }); carTitleElement.textContent = `${dataArr[pos].year} ${dataArr[pos].make} ${dataArr[pos].model}`;
+            carPriceElement.textContent = `${dataArr[pos].monthlyCost}`;
+        }
+    }
+    let slideInterval = setInterval(goNext, 3000);
+    heroContainer.addEventListener('mouseenter', () => {
+        clearInterval(slideInterval);
+    });
+    heroContainer.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(goNext, 3000);
+    });
+
+    let givenJSON;
+    (async () => {
+        givenJSON = await fetch('./data/cars.json').then((res) => {
+            return res.json();
+        });
+        console.log(givenJSON);
+        thumbnailContainer.innerHTML = "";
+        for (let item of givenJSON['Brands']) {
+            let thumbnail = document.createElement('img');
+            thumbnail.src = item['cars'][0]['src'];
+            thumbnailContainer.appendChild(thumbnail);
+            dataArr.push({
+                make: item['cars'][0]['make'],
+                model: item['cars'][0]['model'],
+                year: item['cars'][0]['year'],
+                monthlyCost: item['cars'][0]['leaseMonthlyCost'],
+            });
+        }
+        thumbnailContainer.children[0].classList.add('selected');
+
+        for (let img of thumbnailContainer.children) {
+            img.addEventListener('click', () => {
+                let pos = Array.from(thumbnailContainer.children).indexOf(img);
+                removeActive();
+                mainImage.src = img.src;
+                img.classList.add('selected');
+                carTitleElement.textContent = `${dataArr[pos].year} ${dataArr[pos].make} ${dataArr[pos].model}`;
+                carPriceElement.textContent = `${dataArr[pos].monthlyCost}`;
+            });
+        }
+        goNext();
+
+
+
+
+
+
+
+        //SEARCH IMPLEMENTATION HERE:
+        let carData = [];
+        for (let brand of givenJSON['Brands']) {
+            for (let car of brand['cars']) {
+                    carData.push({
+                        year: car.year,
+                        make: car.make,
+                        model: car.model
+                    });
+            }
+        }
+        function displaySearch(){
+            // If input not finalized disable search button
+            // Clear current search display
+            // Ensure object is visible
+            // Get current input
+            // Split by space
+            // If first word
+                    // If current input is number
+                    // Suggest 'year + make + model'
+                    //Else suggest make + model
+                    // If not found display 'no results' and disable search button
+            // If second word 
+                    // If first word was number
+                        // Suggest make
+                    // Else
+                        // Suggest model
+            // If third word
+                // If first word was number
+                    // Suggest make
+                // Else
+                    // Show 'no results/Invalid results'
+        }
+        function hideSearch(){
+            // Hide suggestion thingy
+        }
+        /*
+            For brand in data
+            For cars in brand
+            Create object and add to array
+        */
+        // First word should be brand or year
+        // If number, suggest years
+        // If word, suggest makes
+        // If first word is word, suggest models
+        // else, suggest makes
+        // If third word, and first word is number, suggest makes
+        // else, show not found
+        // If not found, show not found ofc
+        /* 
+            Data Structure:
+            Array of car objects with:
+                - Brand
+                - Model
+                - Year
+        */
+
+        let dropdown = document.createElement('ul');
+
+
+
+    })();
+
+    let viewDetailsBtn = document.getElementById('hero-view-details');
+    viewDetailsBtn.addEventListener('click', () => {
+        let pos = Array.from(thumbnailContainer.children).indexOf(img);
+        let make = dataArr[pos]['make'];
+        window.location.href = `./pages/car-details.html?make=${make}`;
+    });
+
+
+
+
 </script>
+
 </html>
