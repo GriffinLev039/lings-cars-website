@@ -12,9 +12,7 @@
 <script src="../js/hamburger-handler.js" defer></script>
 
 <style>
-html {
-    background-color: var(--foreground);
-}
+html { background-color: var(--foreground); }
 
 main {
     background-color: var(--background);
@@ -24,13 +22,11 @@ main {
     gap: 30px;
 }
 
-/* TOP */
 .top-section {
     display: flex;
     gap: 30px;
 }
 
-/* FILTERS */
 .filters {
     background-color: var(--foreground);
     padding: 20px;
@@ -41,27 +37,6 @@ main {
     gap: 15px;
 }
 
-.filters h3 {
-    color: var(--primary-color);
-}
-
-.filters input,
-.filters select,
-.filters button {
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid var(--text-color);
-    background-color: var(--background);
-    color: var(--text-color);
-}
-
-.filters button:hover {
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-/* HERO */
 .hero {
     flex: 1;
     position: relative;
@@ -74,28 +49,21 @@ main {
     border-radius: 15px;
 }
 
-.hero h2 {
+.hero h2, .hero p {
     position: absolute;
-    top: 20px;
     left: 20px;
     color: var(--primary-color);
 }
 
-.hero p {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: var(--primary-color);
-}
+.hero h2 { top: 20px; }
+.hero p { bottom: 20px; }
 
-/* CAR GRID */
 .car-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 20px;
 }
 
-/* CARD */
 .car-card {
     background-color: var(--foreground);
     border-radius: 15px;
@@ -114,15 +82,6 @@ main {
     padding: 10px;
 }
 
-.car-info h3 {
-    color: var(--primary-color);
-}
-
-.car-info p {
-    margin: 3px 0;
-}
-
-/* BUTTON */
 .view-btn {
     margin-top: auto;
     padding: 10px;
@@ -131,31 +90,15 @@ main {
     color: var(--background);
     cursor: pointer;
 }
-
-.view-btn:hover {
-    opacity: 0.85;
-}
-
-/* MOBILE */
-@media (max-width: 800px) {
-    .top-section {
-        flex-direction: column;
-    }
-
-    .filters {
-        width: 100%;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
 <header>
     <div id="hburger-container">
         <button id="hamburger-icon">=</button>
-        <a id="Car Listing" href="../index.html">LOGO</a>
+        <a id="Car List" href="../index.html">Lings Cars</a>
         <div id="invis-spacer"></div>
     </div>
 
@@ -171,76 +114,51 @@ main {
 
 <main>
 
-<!-- TOP -->
 <div class="top-section">
 
-    <!-- FILTERS -->
     <div class="filters">
         <h3>Filters</h3>
-
-        <label>Max Price</label>
-        <input type="range" min="100" max="2000">
-
-        <label>Make</label>
-        <select>
-            <option>Any</option>
-            <option>Toyota</option>
-            <option>Honda</option>
-        </select>
-
-        <label>Type</label>
-        <select>
-            <option>Any</option>
-            <option>Sedan</option>
-            <option>SUV</option>
-        </select>
-
+        <input type="range">
+        <select><option>Make</option></select>
+        <select><option>Type</option></select>
         <button>Search</button>
     </div>
 
-    <!-- HERO -->
     <div class="hero">
-        <img src="../img/red-nissan.png" alt="Nissan Versa">
+        <img src="../img/red-nissan.png">
         <h2>Nissan Versa</h2>
         <p>$999/mo</p>
     </div>
 
 </div>
 
-<!-- CAR LIST -->
 <div class="car-container">
 
     <div class="car-card">
         <img src="../img/Nissan_versa.png">
         <div class="car-info">
             <h3>Nissan Versa</h3>
-            <p>MPG City: 27</p>
-            <p>MPG HW: 35</p>
             <p>$999/mo</p>
         </div>
-        <button class="view-btn" onclick="goToDetails()">View Details</button>
+        <button class="view-btn" data-car="Nissan Versa">View Details</button>
     </div>
 
     <div class="car-card">
-        <img src="../img/Toyota_001.jpg">
+        <img src="../img/toyota.png">
         <div class="car-info">
             <h3>Toyota Corolla</h3>
-            <p>MPG City: 30</p>
-            <p>MPG HW: 38</p>
             <p>$899/mo</p>
         </div>
-        <button class="view-btn" onclick="goToDetails()">View Details</button>
+        <button class="view-btn" data-car="Toyota Corolla">View Details</button>
     </div>
 
     <div class="car-card">
-        <img src="../img/Honda_001.jpg">
+        <img src="../img/honda.png">
         <div class="car-info">
             <h3>Honda Civic</h3>
-            <p>MPG City: 31</p>
-            <p>MPG HW: 40</p>
             <p>$950/mo</p>
         </div>
-        <button class="view-btn" onclick="goToDetails()">View Details</button>
+        <button class="view-btn" data-car="Honda Civic">View Details</button>
     </div>
 
 </div>
@@ -248,9 +166,16 @@ main {
 </main>
 
 <script>
-function goToDetails() {
-    window.location.href = "./car-details.html";
-}
+document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.view-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const carName = button.getAttribute('data-car');
+            window.location.href = `./car-details.html?car=${encodeURIComponent(carName)}`;
+        });
+    });
+});
 </script>
 
 </body>
