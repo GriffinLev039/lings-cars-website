@@ -1,4 +1,4 @@
-/* ── Page wrapper ── */
+/* Page wrapper */
 .car-details-main {
     box-sizing: border-box;
     width: 100vw;
@@ -17,19 +17,19 @@
     width: 80vw;
 }
 
-/* ── Breadcrumb + title wrapper ── */
+/* Breadcrumb + title wrapper */
 .car-header {
     display: grid;
     gap: 0.25rem;
 }
 
-/* ── Breadcrumb ── */
+/* Breadcrumb */
 .breadcrumb {
     font-size: 0.8rem;
     color: var(--text-color);
 }
 
-/* ── Car title ── */
+/* Car title */
 .car-title {
     color: var(--heading-color);
     font-size: clamp(1.6rem, 6vw, 2.8rem);
@@ -37,7 +37,7 @@
     margin-top: 0;
 }
 
-/* ── Top section: carousel + sidebar ── */
+/* Top section: carousel + sidebar */
 /* Mobile: single column */
 .car-top {
     display: grid;
@@ -45,7 +45,7 @@
     gap: 1rem;
 }
 
-/* ── Image carousel ── */
+/* Image carousel */
 .car-carousel {
     position: relative;
     width: 100%;
@@ -55,6 +55,10 @@
     overflow: hidden;
     display: grid;
     place-items: center;
+    /* ambient + directional shadow */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
 }
 
 .carousel-img {
@@ -117,18 +121,22 @@
     opacity: 1;
 }
 
-/* ── Sidebar (pricing + key details) ── */
+/* Sidebar (pricing + key details) */
 .car-sidebar {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
 }
 
-/* ── Pricing box ── */
+/* Pricing box */
 .pricing-box {
     background-color: var(--foreground);
     border-radius: 8px;
     padding: 1rem 1.25rem;
+    /* prominent shadow — highest visual priority on page */
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
 }
 
 .price {
@@ -168,18 +176,27 @@
     border: none;
     border-radius: 6px;
     cursor: pointer;
-    transition: opacity 0.15s;
+    /* shadow beneath CTA button */
+    box-shadow: 0 4px 12px rgba(235, 94, 40, 0.35);
+    transition: opacity 0.15s, box-shadow 0.2s, transform 0.2s;
 }
 
 .lease-btn:hover {
-    opacity: 0.85;
+    opacity: 0.9;
+    /* lifts on hover */
+    box-shadow: 0 6px 18px rgba(235, 94, 40, 0.50);
+    transform: translateY(-2px);
 }
 
-/* ── Key Details box ── */
+/* Key Details box */
 .key-details-box {
     background-color: var(--foreground);
     border-radius: 8px;
     padding: 1rem 1.25rem;
+    /* ambient + directional shadow */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
 }
 
 .section-title {
@@ -213,7 +230,7 @@
     color: var(--heading-color);
 }
 
-/* ── Bottom section ── */
+/* Bottom section */
 .car-bottom {
     display: grid;
     grid-template-columns: 1fr;
@@ -231,6 +248,10 @@
     background-color: var(--foreground);
     border-radius: 8px;
     padding: 1rem 1.25rem;
+    /* subtle shadow for surface depth */
+    box-shadow:
+        0 2px 8px  rgba(0, 0, 0, 0.40),
+        0 1px 2px  rgba(0, 0, 0, 0.25);
 }
 
 .summary-list,
@@ -246,7 +267,7 @@
     font-size: 0.9rem;
 }
 
-/* ── View Similar Cars bar ── */
+/* View Similar Cars bar */
 a:has(.similar-cars-bar) {
     display: block;
     width: 80vw;
@@ -263,21 +284,28 @@ a:has(.similar-cars-bar) {
     font-weight: 600;
     font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.2s;
+    /* subtle shadow + lift transition */
+    box-shadow:
+        0 2px 8px  rgba(0, 0, 0, 0.40),
+        0 1px 2px  rgba(0, 0, 0, 0.25);
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 
 .similar-cars-bar:hover {
     background-color: var(--primary-color);
+    /* lifts on hover */
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.50),
+        0 2px 6px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
 }
 
-/* ── Active nav link indicator ── */
+/* Active nav link indicator */
 .header-item.current-page > a {
     color: var(--primary-color);
 }
 
-/* ─────────────────────────────────────────
-   Desktop overrides — 768px and wider
-───────────────────────────────────────── */
+/* Desktop overrides — 768px and wider */
 @media (min-width: 768px) {
 
     /* Two-column grid: carousel left, sidebar right */
