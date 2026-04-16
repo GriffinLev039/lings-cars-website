@@ -1,4 +1,4 @@
-/* ── Page wrapper ── */
+/* Page wrapper */
 .about-main {
     box-sizing: border-box;
     width: 100vw;
@@ -17,7 +17,7 @@
     width: 80vw;
 }
 
-/* ── "Ling's Cars" title ── */
+/* "Ling's Cars" title */
 .about-title {
     color: var(--primary-color);
     font-size: clamp(2.5rem, 10vw, 7rem);
@@ -28,12 +28,43 @@
     line-height: 1;
 }
 
-/* ── Shared box style (description, address, contact) ── */
+/* Shared box style (description, address, contact) */
 .about-box {
     background-color: var(--foreground);
     border-radius: 12px;
     padding: 1.25rem 1.5rem;
     min-height: 160px;
+    /* ambient + directional shadow */
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
+}
+
+/* Description box sits highest — most prominent surface on the page */
+.about-description {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.about-description:hover {
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.55),
+        0 4px 10px  rgba(0, 0, 0, 0.40);
+    transform: translateY(-3px);
+}
+
+/* Info boxes lift on hover */
+.about-info-row .about-box {
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.about-info-row .about-box:hover {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 
 .about-box p {
@@ -42,19 +73,19 @@
     line-height: 1.6;
 }
 
-/* ── Box label (Address Info, Contact Info) ── */
+/* Box label (Address Info, Contact Info) */
 .about-box-title {
     color: var(--heading-color);
     font-size: clamp(0.95rem, 2.5vw, 1.2rem);
     font-weight: 600;
 }
 
-/* ── Active nav indicator ── */
+/* Active nav indicator */
 .header-item.current-page > a {
     color: var(--primary-color);
 }
 
-/* ── Address / Contact row ── */
+/* Address / Contact row */
 /* Mobile: single column */
 .about-info-row {
     display: grid;
@@ -62,9 +93,7 @@
     gap: 1rem;
 }
 
-/* ─────────────────────────────────────────
-   Desktop overrides — 768px and wider
-───────────────────────────────────────── */
+/* Desktop overrides — 768px and wider */
 @media (min-width: 768px) {
 
     .about-box {

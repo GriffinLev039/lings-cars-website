@@ -59,6 +59,15 @@
     box-shadow:
         0 4px 16px rgba(0, 0, 0, 0.45),
         0 1px 4px  rgba(0, 0, 0, 0.30);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.car-carousel:hover {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 
 .carousel-img {
@@ -137,6 +146,15 @@
     box-shadow:
         0 8px 24px rgba(0, 0, 0, 0.50),
         0 2px 8px  rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.pricing-box:hover {
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.55),
+        0 4px 10px  rgba(0, 0, 0, 0.40);
+    transform: translateY(-3px);
 }
 
 .price {
@@ -197,6 +215,15 @@
     box-shadow:
         0 4px 16px rgba(0, 0, 0, 0.45),
         0 1px 4px  rgba(0, 0, 0, 0.30);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.key-details-box:hover {
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 
 .section-title {
@@ -252,6 +279,15 @@
     box-shadow:
         0 2px 8px  rgba(0, 0, 0, 0.40),
         0 1px 2px  rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.info-box:hover {
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.50),
+        0 2px 6px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-3px);
 }
 
 .summary-list,
