@@ -19,35 +19,41 @@ html, body {
 
 main {
     background-color: var(--background);
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    min-height: 100vh;
-    color: var(--text-color);
-}
-
-/* Top section: filter panel + hero side by side */
-.top-section {
-    display: flex;
+    padding: 24px 40px;
+    /* filter column fixed, right column takes the rest */
+    display: grid;
+    grid-template-columns: 220px 1fr;
     gap: 24px;
-    align-items: stretch;
+    height: calc(100vh - 60px);
+    color: var(--text-color);
+    overflow: hidden;
 }
 
-/* Filter panel */
+/* Let filter + right column participate directly in main's grid */
+.top-section {
+    display: contents;
+}
+
+/* Filter panel, medium surface */
 .filters {
     background-color: var(--foreground);
     padding: 20px;
     border-radius: 12px;
-    width: 220px;
-    flex-shrink: 0;
-    align-self: flex-start;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto 1fr;
     gap: 16px;
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.45),
-        0 1px 4px  rgba(0, 0, 0, 0.30);
+        0 8px 24px rgba(0, 0, 0, 0.50),
+        0 2px 8px  rgba(0, 0, 0, 0.35);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.filters:hover {
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.55),
+        0 4px 10px  rgba(0, 0, 0, 0.40);
+    transform: translateY(-3px);
 }
 
 .filters h3 {
@@ -127,22 +133,31 @@ input[type="range"] {
     background-color: var(--primary-color);
 }
 
-/* Hero image */
+/* Hero image — highest surface, strongest shadow + outline glow */
 .hero {
-    flex: 1;
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    min-height: 160px;
+    background-color: var(--foreground);
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.45),
-        0 1px 4px  rgba(0, 0, 0, 0.30);
+        0 12px 32px rgba(0, 0, 0, 0.55),
+        0 4px 10px  rgba(0, 0, 0, 0.40);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+/* lifts on hover */
+.hero:hover {
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.60),
+        0 6px 14px  rgba(0, 0, 0, 0.45);
+    transform: translateY(-3px);
 }
 
 .hero img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    object-position: center center;
     display: block;
 }
 
@@ -156,15 +171,18 @@ input[type="range"] {
     text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
-/* Car table */
+/* Car table — lowest surface, subtle shadow */
 .car-table-wrapper {
     background-color: var(--foreground);
     border-radius: 12px;
-    overflow: hidden;
+    overflow-y: auto;
+    min-height: 0;
     box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.45),
-        0 1px 4px  rgba(0, 0, 0, 0.30);
+        0 2px 8px  rgba(0, 0, 0, 0.40),
+        0 1px 2px  rgba(0, 0, 0, 0.25);
+    transition: box-shadow 0.2s, transform 0.2s;
 }
+
 
 table {
     width: 100%;
@@ -185,12 +203,25 @@ thead th {
     white-space: nowrap;
 }
 
+/* Right column, hero fixed height, table fills the rest */
+.right-col {
+    display: grid;
+    grid-template-rows: 70% 1fr;
+    gap: 16px;
+    overflow: hidden;
+}
+
 /* Hero image cross-fade on row hover */
 .hero img {
     transition: opacity 0.2s;
 }
 
 /* Sort arrows in header */
+thead th {
+    cursor: pointer;
+    user-select: none;
+}
+
 thead th .sort-arrows {
     display: inline-flex;
     flex-direction: column;
@@ -201,14 +232,27 @@ thead th .sort-arrows {
     opacity: 0.6;
 }
 
-tbody tr {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    transition: background-color 0.15s;
-    cursor: pointer;
+thead th.sort-asc .sort-arrows,
+thead th.sort-desc .sort-arrows {
+    opacity: 1;
+    color: var(--primary-color);
 }
 
+tbody tr {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: background-color 0.15s, box-shadow 0.2s, transform 0.2s;
+}
+
+/* each row lifts on hover */
 tbody tr:hover {
     background-color: rgba(255,255,255,0.04);
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.50),
+        0 2px 6px  rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+    position: relative;
+    z-index: 1;
 }
 
 tbody td {
@@ -247,19 +291,14 @@ tbody td:first-child {
 /* Mobile adjustments */
 @media (max-width: 700px) {
     main {
+        grid-template-columns: 1fr;
+        height: auto;
+        overflow: auto;
         padding: 16px 16px 3rem;
     }
 
-    .top-section {
-        flex-direction: column;
-    }
-
-    .filters {
-        width: 100%;
-    }
-
-    .hero {
-        min-height: 220px;
+    .right-col {
+        grid-template-rows: 180px 1fr;
     }
 
     thead th, tbody td {
@@ -297,150 +336,251 @@ tbody td:first-child {
             <h3>Filter</h3>
 
             <div class="filter-group">
-                <span class="filter-label">Price</span>
+                <span class="filter-label">Max Price</span>
                 <div class="price-range-labels">
-                    <span class="price-tag" id="price-min-label">$99</span>
-                    <span class="price-tag" id="price-max-label">$500</span>
+                    <span class="price-tag" id="price-max-label">$350</span>
                 </div>
-                <input type="range" id="price-min" min="99" max="1000" value="99">
-                <input type="range" id="price-max" min="99" max="1000" value="500">
+                <input type="range" id="price-max" min="200" max="350" value="350">
             </div>
 
             <div class="filter-group">
                 <span class="filter-label">Make</span>
                 <select id="filter-make">
-                    <option value="">Select Make</option>
+                    <option value="">All Makes</option>
                     <option>Nissan</option>
                     <option>Toyota</option>
                     <option>Honda</option>
                     <option>Chevrolet</option>
-                    <option>Ford</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <span class="filter-label">Model</span>
                 <select id="filter-model">
-                    <option value="">Select Model</option>
+                    <option value="">All Models</option>
                     <option>Versa</option>
                     <option>Sentra</option>
                     <option>Kicks</option>
                     <option>Corolla</option>
                     <option>Civic</option>
+                    <option>Trax</option>
                 </select>
             </div>
 
             <div class="filter-group">
                 <span class="filter-label">Type</span>
                 <select id="filter-type">
-                    <option value="">Select Type</option>
+                    <option value="">All Types</option>
                     <option>Sedan</option>
                     <option>SUV</option>
-                    <option>Truck</option>
                     <option>Hatchback</option>
                 </select>
             </div>
 
-            <button class="search-btn">Search</button>
+            <button class="search-btn" id="reset-btn">Reset</button>
         </div>
 
-        <!-- Featured car hero -->
-        <div class="hero">
-            <img src="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif" alt="2025 Nissan Versa">
-            <h2 class="hero-title">2025 Nissan Versa</h2>
-        </div>
+        <!-- Hero image + table stacked in the right column -->
+        <div class="right-col">
 
-    </div>
+            <div class="hero">
+                <img src="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif" alt="2025 Nissan Versa">
+                <h2 class="hero-title">2025 Nissan Versa</h2>
+            </div>
 
-    <!-- Car listings table -->
-    <div class="car-table-wrapper">
-        <table>
-            <thead>
-                <tr>
-                    <th>Car Name <span class="sort-arrows">▲▼</span></th>
-                    <th>MpG (City) <span class="sort-arrows">▲▼</span></th>
-                    <th>MpG (HW) <span class="sort-arrows">▲▼</span></th>
-                    <th>Cost <span class="sort-arrows">▲▼</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif">
-                    <td>Nissan Versa</td>
-                    <td>25 mpg</td>
-                    <td>35 mpg</td>
-                    <td>$200/mo</td>
-                </tr>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissansentra2.avif">
-                    <td>Nissan Sentra</td>
-                    <td>29 mpg</td>
-                    <td>39 mpg</td>
-                    <td>$350/mo</td>
-                </tr>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissankicks.avif">
-                    <td>Nissan Kicks</td>
-                    <td>31 mpg</td>
-                    <td>36 mpg</td>
-                    <td>$250/mo</td>
-                </tr>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Toyota/toyotacorolla.png">
-                    <td>Toyota Corolla</td>
-                    <td>31 mpg</td>
-                    <td>40 mpg</td>
-                    <td>$300/mo</td>
-                </tr>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Honda/hondacivic2.png">
-                    <td>Honda Civic</td>
-                    <td>32 mpg</td>
-                    <td>42 mpg</td>
-                    <td>$275/mo</td>
-                </tr>
-                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Chevrolet/trax.avif">
-                    <td>Chevrolet Trax</td>
-                    <td>26 mpg</td>
-                    <td>30 mpg</td>
-                    <td>$225/mo</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+            <div class="car-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Car Name <span class="sort-arrows">▲▼</span></th>
+                            <th>MpG (City) <span class="sort-arrows">▲▼</span></th>
+                            <th>MpG (HW) <span class="sort-arrows">▲▼</span></th>
+                            <th>Cost <span class="sort-arrows">▲▼</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif" data-make="Nissan" data-model="Versa" data-type="Sedan" data-cost="200">
+                            <td>Nissan Versa</td>
+                            <td>25 mpg</td>
+                            <td>35 mpg</td>
+                            <td>$200/mo</td>
+                        </tr>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissansentra2.avif" data-make="Nissan" data-model="Sentra" data-type="Sedan" data-cost="350">
+                            <td>Nissan Sentra</td>
+                            <td>29 mpg</td>
+                            <td>39 mpg</td>
+                            <td>$350/mo</td>
+                        </tr>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissankicks.avif" data-make="Nissan" data-model="Kicks" data-type="SUV" data-cost="250">
+                            <td>Nissan Kicks</td>
+                            <td>31 mpg</td>
+                            <td>36 mpg</td>
+                            <td>$250/mo</td>
+                        </tr>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Toyota/toyotacorolla.png" data-make="Toyota" data-model="Corolla" data-type="Sedan" data-cost="300">
+                            <td>Toyota Corolla</td>
+                            <td>31 mpg</td>
+                            <td>40 mpg</td>
+                            <td>$300/mo</td>
+                        </tr>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Honda/hondacivic2.png" data-make="Honda" data-model="Civic" data-type="Hatchback" data-cost="275">
+                            <td>Honda Civic</td>
+                            <td>32 mpg</td>
+                            <td>42 mpg</td>
+                            <td>$275/mo</td>
+                        </tr>
+                        <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Chevrolet/trax.avif" data-make="Chevrolet" data-model="Trax" data-type="SUV" data-cost="225">
+                            <td>Chevrolet Trax</td>
+                            <td>26 mpg</td>
+                            <td>30 mpg</td>
+                            <td>$225/mo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div><!-- end right-col -->
 
 </main>
 
 <script>
-    /* Price range labels */
-    const minInput = document.getElementById('price-min');
-    const maxInput = document.getElementById('price-max');
-    const minLabel = document.getElementById('price-min-label');
-    const maxLabel = document.getElementById('price-max-label');
+    /* Grab all the filter controls from the page */
+    const maxInput    = document.getElementById('price-max');
+    const maxLabel    = document.getElementById('price-max-label');
+    const makeSelect  = document.getElementById('filter-make');
+    const modelSelect = document.getElementById('filter-model');
+    const typeSelect  = document.getElementById('filter-type');
+    const resetBtn    = document.getElementById('reset-btn');
 
-    minInput.addEventListener('input', () => {
-        if (parseInt(minInput.value) > parseInt(maxInput.value)) minInput.value = maxInput.value;
-        minLabel.textContent = '$' + minInput.value;
-    });
+    /* Grab every car row in the table */
+    const rows = document.querySelectorAll('tbody tr');
 
-    maxInput.addEventListener('input', () => {
-        if (parseInt(maxInput.value) < parseInt(minInput.value)) maxInput.value = minInput.value;
-        maxLabel.textContent = '$' + maxInput.value;
-    });
+    /* Grab the big hero image and title at the top */
+    const heroImg    = document.querySelector('.hero img');
+    const heroTitle  = document.querySelector('.hero-title');
 
-    /* Hovering a row swaps the hero image */
-    const heroImg = document.querySelector('.hero img');
-    const heroTitle = document.querySelector('.hero-title');
-    const defaultSrc = heroImg.src;
+    /* Remember what the hero image and title look like by default so we can restore them */
+    const defaultSrc   = heroImg.src;
     const defaultTitle = heroTitle.textContent;
 
-    document.querySelectorAll('tbody tr').forEach(row => {
+    /* When the price slider moves, update the label and re-run the filter */
+    maxInput.addEventListener('input', () => {
+        maxLabel.textContent = '$' + maxInput.value;
+        applyFilters();
+    });
+
+    /* When any dropdown changes, re-run the filter immediately */
+    makeSelect.addEventListener('change', applyFilters);
+    modelSelect.addEventListener('change', applyFilters);
+    typeSelect.addEventListener('change', applyFilters);
+
+    /* Check every row and show it if it matches all active filters, hide it if not */
+    function applyFilters() {
+        /* Read the current values from every filter control */
+        const maxCost = parseInt(maxInput.value);
+        const make    = makeSelect.value;
+        const model   = modelSelect.value;
+        const type    = typeSelect.value;
+
+        rows.forEach(row => {
+            /* Read the hidden data stored on each row */
+            const cost     = parseInt(row.dataset.cost);
+            const rowMake  = row.dataset.make;
+            const rowModel = row.dataset.model;
+            const rowType  = row.dataset.type;
+
+            /* A row is visible only if it passes every active filter.
+               If a dropdown is set to "All" (empty string) we skip that check. */
+            const visible =
+                cost <= maxCost &&
+                (make  === '' || rowMake  === make)  &&
+                (model === '' || rowModel === model) &&
+                (type  === '' || rowType  === type);
+
+            /* Show or hide the row based on the result above */
+            row.style.display = visible ? '' : 'none';
+        });
+    }
+
+    /* When Reset is clicked, put every filter back to its default and re-run */
+    resetBtn.addEventListener('click', () => {
+        maxInput.value = maxInput.max;
+        maxLabel.textContent = '$' + maxInput.max;
+        makeSelect.value  = '';
+        modelSelect.value = '';
+        typeSelect.value  = '';
+        applyFilters();
+    });
+
+    /* Sorting */
+
+    /* Reference to the table body so we can move rows around inside it */
+    const tbody = document.querySelector('tbody');
+
+    /* Track which column is currently sorted and which direction */
+    let sortCol = -1;    /* no column is sorted yet, so we start at -1 */
+    let sortAsc = true;  /* true = A to Z / low to high, false = Z to A / high to low */
+
+    /* Add a click listener to every column header */
+    document.querySelectorAll('thead th').forEach((th, colIndex) => {
+        th.addEventListener('click', () => {
+
+            /* If we click the same column again, flip the direction.
+               If we click a different column, switch to it and start ascending. */
+            if (sortCol === colIndex) {
+                sortAsc = !sortAsc;
+            } else {
+                sortCol = colIndex;
+                sortAsc = true;
+            }
+
+            /* Remove the active arrow highlight from all headers,
+               then add it only to the one we just clicked */
+            document.querySelectorAll('thead th').forEach(h => {
+                h.classList.remove('sort-asc', 'sort-desc');
+            });
+            th.classList.add(sortAsc ? 'sort-asc' : 'sort-desc');
+
+            /* Grab every row (including hidden ones) and sort them */
+            const allRows = Array.from(tbody.querySelectorAll('tr'));
+            allRows.sort((a, b) => {
+                /* Get the text inside the clicked column's cell for both rows */
+                const aText = a.querySelectorAll('td')[colIndex].textContent.trim();
+                const bText = b.querySelectorAll('td')[colIndex].textContent.trim();
+
+                /* Strip out anything that isn't a number or decimal point,
+                   so "$200/mo" becomes 200 and "25 mpg" becomes 25 */
+                const aNum = parseFloat(aText.replace(/[^0-9.]/g, ''));
+                const bNum = parseFloat(bText.replace(/[^0-9.]/g, ''));
+
+                /* If both values are numbers, sort numerically.
+                   Otherwise sort alphabetically. */
+                const isNumeric = !isNaN(aNum) && !isNaN(bNum);
+                const cmp = isNumeric ? aNum - bNum : aText.localeCompare(bText);
+
+                /* Flip the result if we are sorting descending */
+                return sortAsc ? cmp : -cmp;
+            });
+
+            /* Put the rows back into the table in the new sorted order */
+            allRows.forEach(row => tbody.appendChild(row));
+        });
+    });
+
+    /* When the mouse enters a row, swap the hero image and title to match that car */
+    rows.forEach(row => {
         row.addEventListener('mouseenter', () => {
             heroImg.src = row.dataset.img;
             heroTitle.textContent = row.querySelector('td').textContent;
         });
 
+        /* When the mouse leaves, put the hero image and title back to the default */
         row.addEventListener('mouseleave', () => {
             heroImg.src = defaultSrc;
             heroTitle.textContent = defaultTitle;
         });
 
-        /* Row click navigates to car details */
+        /* Clicking a row takes you to that car's details page */
         row.addEventListener('click', () => {
             window.location.href = row.dataset.href;
         });
