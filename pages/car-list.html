@@ -12,7 +12,10 @@
 <script src="../js/hamburger-handler.js" defer></script>
 
 <style>
-html { background-color: var(--foreground); }
+/* Page background */
+html, body {
+    background-color: var(--background);
+}
 
 main {
     background-color: var(--background);
@@ -20,75 +23,249 @@ main {
     display: flex;
     flex-direction: column;
     gap: 30px;
+    min-height: 100vh;
+    color: var(--text-color);
 }
 
+/* Top section: filter panel + hero side by side */
 .top-section {
     display: flex;
-    gap: 30px;
+    gap: 24px;
+    align-items: stretch;
 }
 
+/* Filter panel */
 .filters {
     background-color: var(--foreground);
     padding: 20px;
-    border-radius: 15px;
-    width: 250px;
+    border-radius: 12px;
+    width: 220px;
+    flex-shrink: 0;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 16px;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
 }
 
+.filters h3 {
+    color: var(--heading-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Price range section */
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-label {
+    color: var(--heading-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Price labels above slider */
+.price-range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: var(--text-color);
+}
+
+.price-tag {
+    background-color: var(--primary-color);
+    color: var(--heading-color);
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+input[type="range"] {
+    width: 100%;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Dropdowns */
+.filters select {
+    width: 100%;
+    padding: 8px 10px;
+    background-color: var(--background);
+    color: var(--heading-color);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23CCC5B9' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Search button */
+.search-btn {
+    padding: 10px;
+    background-color: var(--foreground);
+    color: var(--heading-color);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-btn:hover {
+    background-color: var(--primary-color);
+}
+
+/* Hero image */
 .hero {
     flex: 1;
     position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 160px;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
 }
 
 .hero img {
     width: 100%;
-    height: 60vh;
+    height: 100%;
     object-fit: cover;
-    border-radius: 15px;
+    display: block;
 }
 
-.hero h2, .hero p {
+.hero-title {
     position: absolute;
+    top: 20px;
     left: 20px;
+    color: var(--primary-color);
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* Car table */
+.car-table-wrapper {
+    background-color: var(--foreground);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+        0 4px 16px rgba(0, 0, 0, 0.45),
+        0 1px 4px  rgba(0, 0, 0, 0.30);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--background);
+}
+
+thead th {
+    padding: 14px 20px;
+    text-align: left;
+    color: var(--heading-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+/* Hero image cross-fade on row hover */
+.hero img {
+    transition: opacity 0.2s;
+}
+
+/* Sort arrows in header */
+thead th .sort-arrows {
+    display: inline-flex;
+    flex-direction: column;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-size: 0.6rem;
+    line-height: 1;
+    opacity: 0.6;
+}
+
+tbody tr {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    transition: background-color 0.15s;
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background-color: rgba(255,255,255,0.04);
+}
+
+tbody td {
+    padding: 14px 20px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+}
+
+tbody td:first-child {
+    color: var(--heading-color);
+    font-weight: 500;
+}
+
+/* Orange view indicator on the right */
+.view-indicator {
+    width: 36px;
+    height: 28px;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.view-indicator:hover {
+    opacity: 0.85;
+    transform: scale(1.05);
+}
+
+/* Active nav link */
+.header-item.current-page > a {
     color: var(--primary-color);
 }
 
-.hero h2 { top: 20px; }
-.hero p { bottom: 20px; }
+/* Mobile adjustments */
+@media (max-width: 700px) {
+    main {
+        padding: 16px 16px 3rem;
+    }
 
-.car-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
-}
+    .top-section {
+        flex-direction: column;
+    }
 
-.car-card {
-    background-color: var(--foreground);
-    border-radius: 15px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
+    .filters {
+        width: 100%;
+    }
 
-.car-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-}
+    .hero {
+        min-height: 220px;
+    }
 
-.car-info {
-    padding: 10px;
-}
-
-.view-btn {
-    margin-top: auto;
-    padding: 10px;
-    border: none;
-    background-color: var(--primary-color);
-    color: var(--background);
-    cursor: pointer;
+    thead th, tbody td {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
 }
 </style>
 </head>
@@ -98,10 +275,9 @@ main {
 <header>
     <div id="hburger-container">
         <button id="hamburger-icon">=</button>
-        <a id="Car List" href="../index.html">Lings Cars</a>
+        <a id="logo" href="../index.html">LOGO</a>
         <div id="invis-spacer"></div>
     </div>
-
     <nav>
         <ul id="header-container">
             <li class="header-item current-page"><a href="./car-list.html">Car Leasing</a></li>
@@ -114,68 +290,161 @@ main {
 
 <main>
 
-<div class="top-section">
+    <!-- Filter panel + hero -->
+    <div class="top-section">
 
-    <div class="filters">
-        <h3>Filters</h3>
-        <input type="range">
-        <select><option>Make</option></select>
-        <select><option>Type</option></select>
-        <button>Search</button>
-    </div>
+        <div class="filters">
+            <h3>Filter</h3>
 
-    <div class="hero">
-        <img src="../img/red-nissan.png">
-        <h2>Nissan Versa</h2>
-        <p>$999/mo</p>
-    </div>
+            <div class="filter-group">
+                <span class="filter-label">Price</span>
+                <div class="price-range-labels">
+                    <span class="price-tag" id="price-min-label">$99</span>
+                    <span class="price-tag" id="price-max-label">$500</span>
+                </div>
+                <input type="range" id="price-min" min="99" max="1000" value="99">
+                <input type="range" id="price-max" min="99" max="1000" value="500">
+            </div>
 
-</div>
+            <div class="filter-group">
+                <span class="filter-label">Make</span>
+                <select id="filter-make">
+                    <option value="">Select Make</option>
+                    <option>Nissan</option>
+                    <option>Toyota</option>
+                    <option>Honda</option>
+                    <option>Chevrolet</option>
+                    <option>Ford</option>
+                </select>
+            </div>
 
-<div class="car-container">
+            <div class="filter-group">
+                <span class="filter-label">Model</span>
+                <select id="filter-model">
+                    <option value="">Select Model</option>
+                    <option>Versa</option>
+                    <option>Sentra</option>
+                    <option>Kicks</option>
+                    <option>Corolla</option>
+                    <option>Civic</option>
+                </select>
+            </div>
 
-    <div class="car-card">
-        <img src="../img/Nissan_versa.png">
-        <div class="car-info">
-            <h3>Nissan Versa</h3>
-            <p>$999/mo</p>
+            <div class="filter-group">
+                <span class="filter-label">Type</span>
+                <select id="filter-type">
+                    <option value="">Select Type</option>
+                    <option>Sedan</option>
+                    <option>SUV</option>
+                    <option>Truck</option>
+                    <option>Hatchback</option>
+                </select>
+            </div>
+
+            <button class="search-btn">Search</button>
         </div>
-        <button class="view-btn" data-car="Nissan Versa">View Details</button>
-    </div>
 
-    <div class="car-card">
-        <img src="../img/toyota.png">
-        <div class="car-info">
-            <h3>Toyota Corolla</h3>
-            <p>$899/mo</p>
+        <!-- Featured car hero -->
+        <div class="hero">
+            <img src="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif" alt="2025 Nissan Versa">
+            <h2 class="hero-title">2025 Nissan Versa</h2>
         </div>
-        <button class="view-btn" data-car="Toyota Corolla">View Details</button>
+
     </div>
 
-    <div class="car-card">
-        <img src="../img/honda.png">
-        <div class="car-info">
-            <h3>Honda Civic</h3>
-            <p>$950/mo</p>
-        </div>
-        <button class="view-btn" data-car="Honda Civic">View Details</button>
+    <!-- Car listings table -->
+    <div class="car-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Car Name <span class="sort-arrows">▲▼</span></th>
+                    <th>MpG (City) <span class="sort-arrows">▲▼</span></th>
+                    <th>MpG (HW) <span class="sort-arrows">▲▼</span></th>
+                    <th>Cost <span class="sort-arrows">▲▼</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissanc1.avif">
+                    <td>Nissan Versa</td>
+                    <td>25 mpg</td>
+                    <td>35 mpg</td>
+                    <td>$200/mo</td>
+                </tr>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissansentra2.avif">
+                    <td>Nissan Sentra</td>
+                    <td>29 mpg</td>
+                    <td>39 mpg</td>
+                    <td>$350/mo</td>
+                </tr>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Nissan/nissankicks.avif">
+                    <td>Nissan Kicks</td>
+                    <td>31 mpg</td>
+                    <td>36 mpg</td>
+                    <td>$250/mo</td>
+                </tr>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Toyota/toyotacorolla.png">
+                    <td>Toyota Corolla</td>
+                    <td>31 mpg</td>
+                    <td>40 mpg</td>
+                    <td>$300/mo</td>
+                </tr>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Honda/hondacivic2.png">
+                    <td>Honda Civic</td>
+                    <td>32 mpg</td>
+                    <td>42 mpg</td>
+                    <td>$275/mo</td>
+                </tr>
+                <tr data-href="./car-details.html" data-img="../img/car-brands/imgs_zip/imgs/Chevrolet/trax.avif">
+                    <td>Chevrolet Trax</td>
+                    <td>26 mpg</td>
+                    <td>30 mpg</td>
+                    <td>$225/mo</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-
-</div>
 
 </main>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const buttons = document.querySelectorAll('.view-btn');
+    /* Price range labels */
+    const minInput = document.getElementById('price-min');
+    const maxInput = document.getElementById('price-max');
+    const minLabel = document.getElementById('price-min-label');
+    const maxLabel = document.getElementById('price-max-label');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            const carName = button.getAttribute('data-car');
-            window.location.href = `./car-details.html?car=${encodeURIComponent(carName)}`;
+    minInput.addEventListener('input', () => {
+        if (parseInt(minInput.value) > parseInt(maxInput.value)) minInput.value = maxInput.value;
+        minLabel.textContent = '$' + minInput.value;
+    });
+
+    maxInput.addEventListener('input', () => {
+        if (parseInt(maxInput.value) < parseInt(minInput.value)) maxInput.value = minInput.value;
+        maxLabel.textContent = '$' + maxInput.value;
+    });
+
+    /* Hovering a row swaps the hero image */
+    const heroImg = document.querySelector('.hero img');
+    const heroTitle = document.querySelector('.hero-title');
+    const defaultSrc = heroImg.src;
+    const defaultTitle = heroTitle.textContent;
+
+    document.querySelectorAll('tbody tr').forEach(row => {
+        row.addEventListener('mouseenter', () => {
+            heroImg.src = row.dataset.img;
+            heroTitle.textContent = row.querySelector('td').textContent;
+        });
+
+        row.addEventListener('mouseleave', () => {
+            heroImg.src = defaultSrc;
+            heroTitle.textContent = defaultTitle;
+        });
+
+        /* Row click navigates to car details */
+        row.addEventListener('click', () => {
+            window.location.href = row.dataset.href;
         });
     });
-});
 </script>
 
 </body>
