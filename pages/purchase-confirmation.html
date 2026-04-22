@@ -3,27 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <!-- This ensures all characters display properly -->
+    <!-- Makes sure all text (like symbols and special characters) displays correctly -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- This makes the page responsive on different screen sizes -->
+    <!-- Helps the page scale properly on phones, tablets, and desktops -->
 
     <title>Purchase Confirmation</title>
+    <!-- This is what shows on the browser tab -->
 
     <link rel="stylesheet" href="../css/reset.css">
-    <!-- This removes default browser styling -->
+    <!-- Removes default browser styling so everything looks consistent -->
 
     <link rel="stylesheet" href="../css/style.css">
-    <!-- This applies global styles like colors and fonts -->
+    <!-- Applies your global styles like colors and fonts -->
 
     <link rel="stylesheet" href="../css/header.css">
-    
+    <!-- Styles your navigation header -->
 
     <link rel="stylesheet" href="../css/confirmation.css">
-    <!-- This will style THIS specific page -->
+    <!-- Styles THIS specific confirmation page -->
 
     <script src="../js/hamburger-handler.js" defer></script>
-    <!-- This allows the hamburger menu to work on mobile -->
+    <!-- Handles the hamburger menu on smaller screens -->
 </head>
 
 <body>
@@ -32,67 +33,138 @@
     <!-- This is the top navigation bar -->
 
     <div id="hburger-container">
+        <!-- Groups hamburger icon, logo, and spacing -->
+
         <button id="hamburger-icon">=</button>
+        <!-- Button used to toggle menu on small screens -->
 
         <a href="../index.html">
             <div id="logo">LOGO</div>
         </a>
+        <!-- Clickable logo that sends user back to homepage -->
 
         <div id="invis-spacer"></div>
+        <!-- Helps keep layout aligned evenly -->
     </div>
 
     <nav>
         <ul id="header-container">
-            <!-- This unordered list contains navigation links -->
+            <!-- Navigation links -->
 
             <li><a href="#">Car Leasing</a></li>
+            <!-- Link to car leasing section -->
+
             <li><a href="#">Van Leasing</a></li>
+            <!-- Link to van leasing section -->
+
             <li><a href="#">Contact Us</a></li>
+            <!-- Link to contact page -->
+
             <li><a href="#">About Us</a></li>
+            <!-- Link to about page -->
         </ul>
     </nav>
 </header>
 
 <main class="confirmation-main">
-    <!-- This is the main content area of the page -->
+    <!-- Main content area for confirmation page -->
 
     <h1>Purchase Confirmed ✅</h1>
-    
+    <!-- Big success message at the top -->
 
     <p>Your order has been successfully submitted!</p>
-
+    <!-- Small confirmation message -->
 
     <div class="summary-box">
-        <!-- This container displays order details -->
+        <!-- This box holds all the order details -->
 
         <h2>Order Summary</h2>
+        <!-- Section title -->
+
         <hr>
+        <!-- Divider line -->
 
         <h3>Car Details</h3>
-        <p><strong>Car Name:</strong> Tesla Model 3</p>
-        <p><strong>Monthly Price:</strong> $450/Month</p>
-        <p><strong>Deposit:</strong> $2,000</p>
+        <!-- Subsection for car info -->
+
+        <p><strong>Car Name:</strong> <span id="car-name"></span></p>
+        <!-- This will be filled with the car the user typed -->
+
+        <p><strong>Monthly Price:</strong> <span id="monthly-price"></span></p>
+        <!-- This will show the user's budget/monthly payment -->
+
+        <p><strong>Deposit:</strong> <span id="deposit"></span></p>
+        <!-- This shows the down payment -->
 
         <hr>
+        <!-- Divider line -->
 
         <h3>Customer Info</h3>
-        <p><strong>Name:</strong> John Doe</p>
-        <p><strong>Email:</strong> johndoe@email.com</p>
+        <!-- Subsection for user info -->
+
+        <p><strong>Name:</strong> <span id="customer-name"></span></p>
+        <!-- Displays the user's name -->
+
+        <p><strong>Email:</strong> <span id="customer-email"></span></p>
+        <!-- Displays the user's email -->
+
     </div>
 
     <p>A confirmation email has been sent to your email.</p>
-    
+    <!-- Extra message to make it feel real -->
 
     <a href="../index.html">
         <button class="browse-btn">Browse More Cars</button>
     </a>
-    
+    <!-- Button to go back to homepage -->
 
 </main>
 
 <footer>
-    <!-- Footer section (We can add content later) -->
+    <!-- Empty footer for now -->
 </footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Waits until the page fully loads before running the script
+
+    // Get values from localStorage (saved from the leasing form)
+    const name = localStorage.getItem("name");
+    // Gets the user's name
+
+    const email = localStorage.getItem("email");
+    // Gets the user's email
+
+    const car = localStorage.getItem("car");
+    // Gets the car they selected
+
+    const budget = localStorage.getItem("budget");
+    // Gets the monthly budget
+
+    const down = localStorage.getItem("down");
+    // Gets the down payment
+
+    // Put those values into the page
+    document.getElementById("customer-name").textContent = name;
+    // Inserts name into the HTML
+
+    document.getElementById("customer-email").textContent = email;
+    // Inserts email into the HTML
+
+    document.getElementById("car-name").textContent = car;
+    // Inserts car name into the HTML
+
+    document.getElementById("monthly-price").textContent = budget;
+    // Inserts monthly price
+
+    document.getElementById("deposit").textContent = down;
+    // Inserts deposit amount
+
+});
+</script>
 
 </body>
 </html>
