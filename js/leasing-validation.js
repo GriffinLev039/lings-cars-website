@@ -94,6 +94,6 @@ form.addEventListener('submit', (e) => {
         localStorage.setItem("down", document.getElementById("down").value);
         localStorage.setItem("credit", document.getElementById("credit").value);
 
-        // Form will now submit and go to purchase-confirmation.html
+        
     }
 });
