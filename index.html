@@ -5,871 +5,707 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ling's Cars</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/leasing.css">
-    <script src="js/hamburger-handler.js" defer></script>
+    <script src="./js/bar.js" defer></script>
     <style>
-        html {
-            background-color: var(--foreground);
-        }
-
-        main {
-            box-sizing: border-box;
-            /* padding: 50px; */
-            width: 100vw;
-            /* height: 100vh; */
-            display: grid;
-            grid-template-columns: 1fr;
-            place-items: center;
-            grid-template-rows: auto 6rem 25rem 22rem auto;
-            background-color: var(--background);
-        }
-
-        main h1 {
-            color: var(--primary-color);
-            font-size: 4.8rem;
-            text-align: center;
-            margin-bottom: 0;
-            margin-top: .5rem;
-        }
-
-        /* SEARCHBAR SECTION */
-
-        #searchContainer {
-            display: flex;
-            position: relative;
-            gap: 0.7rem;
-            width: clamp(80vw, 70%, 100%);
-        }
-
-        #searchContainer input {
-            border-radius: 20px 0px 0px 20px;
-            text-align: center;
-            height: 3rem;
-            background-color: var(--foreground);
-            border: 1px solid var(--text-color);
-            color: var(--text-color);
-        }
-
-        #searchContainer button {
-            border-radius: 0px 20px 20px 0px;
-            width: max-content;
-            white-space: nowrap;
-            padding: .3rem;
-            font-size: .8rem;
-            cursor: pointer;
-            background-color: var(--foreground);
-            border: 1px solid var(--text-color);
-            color: var(--text-color);
-        }
-
-        #searchContainer button:hover {
-            color: var(--primary-color);
-            transition: all 0.10s ease-in-out;
-            border-color: var(--primary-color);
-
-        }
-
-        #searchContainer button:active {
-            color: var(--background);
-            background-color: var(--primary-color);
-            border-color: var(--background);
-        }
-
-
-        #search-suggestions {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background-color: var(--foreground);
-            border: 1px solid var(--text-color);
-            border-radius: 0 0 20px 20px;
-            list-style: none;
+        /* ============================================================
+           BASE / RESET
+        ============================================================ */
+        * {
             margin: 0;
-            padding: 0;
-            z-index: 100;
-            display: none;
+            font-family: "Roboto", sans-serif;
+            /* outline: 1px solid red; */
         }
 
-        #search-suggestions li {
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            color: var(--text-color);
+        body {
+            background-color: var(--background-color);
+            color: var(--heading-color);
         }
 
-        #search-suggestions li:hover {
-            color: var(--primary-color);
+        /* ============================================================
+           HERO / MAIN LAYOUT (#container)
+        ============================================================ */
+        main {
+            background-image: url(./img/source_image.png);
+            background-size: cover;
+            background-position: bottom;
         }
 
+        #container {
+            display: grid;
+            grid-template: 30vh 59vh 1fr / 1fr max-content;
+            grid-template-areas:
+                "a d"
+                "c d"
+                "b b";
+            height: calc(100vh - 4rem);
+            width: 100%;
+        }
 
-        /* HERO SECTION */
-
-        #hero {
+        /* ============================================================
+           PRIMARY CAR INFO PANEL
+        ============================================================ */
+        #primary-car-info {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 90%;
-            height: 100%;
-            user-select: none;
+            flex-direction: column;
+            overflow: hidden;
+            width: clamp(400px, 29vw, 1000px);
+            height: clamp(300px, 50vh, 700px);
+            margin: 2.3rem;
+            padding: 2rem;
+            border-radius: 20px;
+            background: var(--transparent-bg);
+            box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(13.7px);
+            grid-area: d;
+            align-self: end;
+            justify-self: end;
         }
 
-        #left-scrolling {
+        #upper {
+            flex: 1;
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        #lower {
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #primary-car-info h2 {
+            color: var(--heading-color);
+            font-family: "Bebas Neue";
+            font-size: 4.5rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-align: center;
+        }
+
+        #primary-car-info p {
+            color: var(--text-color);
+            font-family: Inter;
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin: 0 auto 2rem auto;
+        }
+
+        #primary-car-info h3 {
+            color: var(--heading-color);
+            font-family: Inter;
+            font-size: 2.8rem;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            width: max-content;
+        }
+
+        #primary-car-info button {
+            width: 40%;
+            height: 6rem;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+            background: rgba(235, 94, 40, 0.80);
+            box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(13.7px);
+            color: var(--heading-color);
+            font-family: "Bebas Neue";
+            font-size: 4.8rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            transition: all ease-in-out 0.2s;
+        }
+
+        #primary-car-info button:active {
+            box-shadow: 0 0 41px 0 #CCC5B9;
+        }
+
+        /* ============================================================
+           CAR SCROLLBAR
+        ============================================================ */
+        #car-scrollbar {
+            box-sizing: border-box;
+            display: flex;
+            flex-flow: row nowrap;
+            gap: 20px;
+            height: 8rem;
+            margin: 2.3rem;
+            border-radius: 20px;
+            background: var(--transparent-bg);
+            box-shadow: 0 4px 4px 3px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(13.7px);
+            grid-area: c;
+            align-self: end;
+            overflow: scroll;
+            padding: 15px;
+        }
+
+        #car-scrollbar img {
+            max-height: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        #car-scrollbar img.selected {
+            max-height: 100%;
+            aspect-ratio: 2/1;
+            object-fit: cover;
+            scale: 1.25;
+            transition: ease-in-out 0.4s;
+            border: 2px solid var(--primary-color);
+        }
+
+        /* ============================================================
+           PREVIOUSLY VIEWED CARS
+        ============================================================ */
+        #previous-cars {
             display: flex;
             flex-flow: column nowrap;
+            justify-content: center;
             align-items: center;
-            gap: 15px;
-            overflow-y: scroll;
-            background-color: var(--foreground);
-            width: 11%;
-            max-width: 30%;
-            max-height: 100%;
-            padding: 18px 0px;
-        }
-
-        #left-scrolling img {
-            /* box-sizing: border-box; */
-            height: 10dvh;
-            aspect-ratio: 1/1;
-            object-fit: cover;
-        }
-
-        #left-scrolling img.selected {
-            border: 3px solid var(--primary-color);
-        }
-
-        #primary-image {
-            position: relative;
-            /* background-image: url("./img/red-nissan.png"); */
-            background-size: cover;
-            width: 78%;
-            height: 100%;
-            box-sizing: border-box;
-        }
-
-        #primary-image img {
-            width: 100%;
-            height: 100%;
-            box-shadow: 0 0 200px rgba(0, 0, 0, 0.5) inset;
-            object-fit: cover;
-
-        }
-
-        #primary-image h2 {
-            position: absolute;
-            color: var(--primary-color);
-            font-size: 2.8rem;
-            text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-            margin: .7rem;
-        }
-
-        #primary-image p {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin-left: 1.4rem;
-            margin-bottom: 0.4rem;
-            font-size: 2rem;
-            color: var(--primary-color);
-            text-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
-        }
-
-        #primary-image button {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin: .4vh;
-            padding: 25px;
-            border-radius: 20px;
-            font-weight: 900;
-            cursor: pointer;
-            color: var(--text-color);
-            background-color: var(--foreground);
-            transition: all 0.10s ease-in-out;
-
-        }
-
-        #primary-image button:hover {
-            color: var(--primary-color);
-        }
-
-        #primary-image button:active {
-            color: var(--foreground);
-            background-color: var(--primary-color);
-            transition: all 0.08s ease-out;
-
-        }
-
-        @media (max-width: 600px) {
-            #hero {
-                flex-direction: column-reverse;
-                max-width: 100%;
-                overflow: hidden;
-            }
-
-            #primary-image {
-                width: 100dvw;
-
-            }
-
-            #left-scrolling {
-                max-width: 100vw;
-                width: 100vw;
-                flex-direction: row;
-                overflow-y: hidden;
-                overflow-x: scroll;
-            }
-
-            #primary-image button {
-                margin: .4rem;
-                margin-right: 1.4rem;
-                padding: 1rem;
-            }
-
-            main {
-                padding: none;
-            }
-        }
-
-
-
-
-        /* PREVIOUSLY VIEWED CARS SECTION */
-        #previously-viewed>div {
-            width: 80vw;
-            /* min-height: 45vh; */
-            /* outline: 1px solid red; */
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset; */
-            border-radius: 25px;
-            /* padding: 10px; */
-            box-sizing: border-box;
-        }
-
-        #display-chip-container {
-            display: flex;
             gap: 1rem;
-            overflow-x: scroll;
-            justify-content: space-around;
-
+            height: 60vh;
+            width: 100vw;
+            background-color: var(--background-color);
         }
 
-        /* CAR DISPLAY CHIP */
-        .car-display-chip {
-            box-sizing: content-box;
-            min-width: 420px;
-            min-height: 320px;
-            max-width: 440px;
-            max-height: 320px;
-            position: relative;
-            background-color: var(--foreground);
-            /* box-sizing: border-box; */
-            padding: 15px 15px 25px 15px;
-            cursor: pointer;
-            border-radius: 25px;
-            box-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.5);
-        }
-
-        .car-display-chip img {
-            /* position: absolute; */
-            top: 0;
-            left: 0;
-            height: 50%;
+        .subheading {
             width: 100%;
+            text-align: center;
+        }
+
+        #previous-inner {
+            display: flex;
+            align-items: center;
+            overflow-x: scroll;
+            overflow-y: hidden;
+            gap: 31px;
+            height: 80%;
+            width: 80%;
+            padding: 25px;
+            box-sizing: border-box;
+            border-radius: 40px;
+            background-color: #ccc5b91a;
+            box-shadow: inset -10px -10px 10px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .prev-car {
+            display: grid;
             overflow: hidden;
+            grid-template-rows: 1fr 1fr;
+            grid-template-areas: "a" "b";
+            height: 320px;
+            min-width: 450px;
+            border-radius: 40px;
+            background-color: var(--foreground-color);
+            box-shadow: 0 4px 11px 5px rgba(0, 0, 0, 0.25);
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .prev-car img {
+            grid-area: a;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
-            border-radius: 10px;
+            background-position: bottom 20px;
         }
 
-        .car-display-chip h4 {
-            font-size: 1.4rem;
+        .prev-car .info {
+            grid-area: b;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 15px 15px 25px 15px;
+            background-color: var(--foreground-color);
         }
 
-        .car-display-chip>div>p {
-            font-size: 0.7rem;
+        .prev-car hr {
+            margin: 0.4rem auto;
+            width: 98%;
         }
 
-        .car-display-chip-details-price p:first-child {
-            font-size: 0.5rem;
+        .prev-car h4 {
+            font-size: 2.4rem;
+            color: var(--heading-color);
         }
 
-        .car-display-chip-details-price p:nth-child(2) {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-        }
-
-        .car-display-chip * {
-            margin: 0px;
-        }
-
-        .car-display-chip hr {
-            margin-top: 15px;
-            margin-bottom: 35px;
+        .info>p {
+            font-size: 1rem;
         }
 
         .car-display-chip-details-price {
+            height: 60%;
             display: flex;
             justify-content: space-between;
+            align-items: end;
+            padding-bottom: 15px;
         }
 
-        @media (max-width: 600px) {
-            .car-display-chip {
-                width: 300px;
-                max-width: 300px;
-                min-width: 300px;
-                box-sizing: border-box;
-            }
-
-            #car-brands {
-                width: 100%;
-            }
+        .car-display-chip-details-price p:first-child {
+            font-size: 1rem;
         }
 
-
-
-        /* CAR BRANDS */
-        #car-brands>div {
-            width: 80vw;
-            /* height: 45vh; */
-            /* outline: 1px solid red; */
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) inset;
-            border-radius: 25px;
-            padding: 10px;
-            box-sizing: border-box; */
-
+        .car-display-chip-details-price p:nth-child(2) {
+            font-size: 2.5rem;
+            color: var(--primary-color);
         }
 
-        #brand-chip-container {
+        /* ============================================================
+           BRAND CHIPS
+        ============================================================ */
+        #brands {
             display: flex;
             flex-flow: row wrap;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 1rem;
+            align-items: center;
+            gap: 40px;
+            height: auto;
+            width: 100vw;
+            padding: 50px;
+            box-sizing: border-box;
+            background-color: var(--background-color);
         }
 
         .brand-chip {
-            width: 5rem;
-            height: 5rem;
-            border: 3px solid var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 8.625rem;
+            height: 8.625rem;
             border-radius: 20px;
-            background-color: var(--foreground);
-            transition: all 0.25s ease-in-out;
+            background-color: var(--foreground-color);
+            box-shadow: 0 4px 11px 5px rgba(0, 0, 0, 0.25);
             cursor: pointer;
+            transition: scale ease-in-out 0.1s;
         }
 
-        .brand-chip:hover {
-            border-color: var(--primary-color);
-        }
-
-        .brand-chip-img {
-            inline-size: 90%;
-            block-size: 90%;
+        .brand-chip img {
             width: 90%;
             height: 90%;
-            object-fit: cover;
-            /* The below should prevent any performance impact, I hope. Otherwise I'll remove a bunch of logos. */
+            object-fit: contain;
+            mix-blend-mode: luminosity;
             content-visibility: auto;
         }
 
-        /* FOOTER */
-        footer {
-            margin-top: 45px;
-            width: 100vw;
-            height: 60px;
-            background-color: var(--foreground);
+        /* ============================================================
+           HOVER EFFECTS (pointer devices only)
+        ============================================================ */
+        @media (hover: hover) {
+            #primary-car-info button:hover {
+                font-size: 5rem;
+            }
+
+            .brand-chip:hover {
+                scale: 1.25;
+            }
+        }
+
+        /* ============================================================
+           RESPONSIVE — MOBILE (max-width: 800px)
+        ============================================================ */
+        @media (max-width: 800px) {
+            #container {
+                grid-template: 1fr auto / 1fr;
+                grid-template-areas:
+                    "d"
+                    "b";
+                height: calc(100vh - 4rem);
+            }
+
+            #primary-car-info {
+                height: auto;
+                max-height: 70vh;
+                width: 90%;
+                margin: 2rem auto 0 auto;
+                padding: 1px;
+                align-self: start;
+                justify-self: center;
+                box-sizing: border-box;
+            }
+
+            #primary-car-info p {
+                display: none;
+            }
+
+            #primary-car-info h3 {
+                font-size: 1.5rem;
+            }
+
+            #primary-car-info button {
+                font-size: 2.5rem;
+                box-sizing: border-box;
+                margin: 7%;
+            }
+
+            #car-scrollbar {
+                grid-area: b;
+                margin-top: 1rem;
+            }
+        }
+
+        #mode-toggle {
+            font-size: 2.3rem;
+            text-align: center;
+
         }
     </style>
 </head>
 
 <body>
-    <header>
-        <div id="hburger-container">
-            <button id="hamburger-icon">=</button>
-            <a id="logo" href="./index.html">LINGS</a>
-            <div id="invis-spacer"></div>
-        </div>
+    <header></header>
 
-        <nav>
-            <ul id="header-container">
-                <li id="car-leasing" class="header-item"><a href="./pages/car-list.html">Car Leasing</a></li>
-                <li id="van-leasing" class="header-item"><a href="./pages/car-list.html">Van Leasing</a></li>
-                <li id="contact-us" class="header-item"><a href="./pages/about-us.html">Contact Us</a></li>
-                <li id="about-us" class="header-item"><a href="./pages/about-us.html">About Us</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
-        <h1>Ling's Cars</h1>
-        <form id="searchContainer" action="./pages/car-list.html" method="get">
-            <input type="text" name="make" placeholder="Search a car...">
-            <ul id="search-suggestions"></ul>
-            <button id="searchBtn" type="submit">Search</button>
-        </form>
-        <div id="hero">
-            <div id="left-scrolling">
-                <img src="img/red-nissan.png" class="selected">
-                <img src="img/car-brands/imgs_zip/imgs/Nissan/Nissan_002.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Ford/Ford_000.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/BMW/BMW_000.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Honda/Honda_002.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Audi/Audi_000.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Dodge/Dodge_005.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Tesla/Tesla_000.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Volvo/Volvo_000.jpg">
-                <img src="img/car-brands/imgs_zip/imgs/Subaru/Subaru_000.jpg">
+        <header>
+            <!-- Navbar -->
+            <div id="bar">
+                <img src="./img/car-with-rainbow-colored-line-top-it_973002-8470-removebg-preview.png" alt="Logo"
+                    id="logo">
+                <ul>
+                    <li><a href="./pages/car-list.html" class="bar-link">Browse</a></li>
+                    <li><a href="./pages/about-us.html" class="bar-link">About</a></li>
+                    <li><a href="./pages/about-us.html" class="bar-link">Contact</a></li>
+                </ul>
+                <form id="searchbar-container" action="./pages/car-list.html" method="get">
+                    <input placeholder="2024 Nissan Sentra" id="searchbar" />
+                    <ul id="search-suggestions"></ul>
+                </form>
+
+                <!-- Hamburger button (mobile only) -->
+                <button id="hamburger-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <button id="mode-toggle">☾</button>
             </div>
-            <div id="primary-image">
-                <h2 id="hero-car-name">2026 Nissan Versa</h2>
-                <p id="hero-car-price">$999/mo</p>
-                <button id="hero-view-details">View Details</button>
-                <img src="./img/red-nissan.png" />
-            </div>
-        </div>
-        <div id="previously-viewed">
-            <h3>Previously Viewed</h3>
-            <div id="display-chip-container">
-                <!-- Car Display Chip -->
-                <div class="car-display-chip">
-                    <!-- Top half is a car image on cover -->
-                    <img src="./img/red-nissan.png" alt="">
-                    <div>
-                        <!-- This is bottom half - content n stuff -->
-                        <h4>2025 Nissan Sentra</h4>
-                        <p>25mpg City | 35mpg HW</p>
-                        <hr>
-                        <div class="car-display-chip-details-price">
-                            <!-- This div will be flex space-between -->
-                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
-                            <p>$200/mo</p>
-                        </div>
-                    </div>
+        </header>
+
+        <!-- Mobile dropdown menu -->
+        <ul id="mobile-menu" role="menu">
+            <li role="menuitem"><a href="" class="bar-link">Browse</a></li>
+            <li role="menuitem"><a href="" class="bar-link">About</a></li>
+            <li role="menuitem"><a href="" class="bar-link">Contact</a></li>
+        </ul>
+
+        <!-- Hero -->
+        <div id="container">
+            <div id="primary-car-info">
+                <div id="upper">
+                    <h2 id="hero-car-name">Nissan Sentra</h2>
+                    <p>Exercitation adipisicing cillum occaecat proident sunt commodo consequat quis id. Proident dolor
+                        deserunt tempor consectetur do amet amet dolor nulla ad laboris in sint nulla. Mollit elit
+                        occaecat aute velit aliquip cillum sit magna ex proident nisi aliqua duis. Veniam irure veniam
+                        ullamco deserunt ea ullamco aliqua esse laborum elit aliquip cupidatat irure occaecat.</p>
                 </div>
-                <div class="car-display-chip">
-                    <!-- Top half is a car image on cover -->
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/2025-mazda-cx-50-hybrid-107-6732abd99f334.jpg?crop=0.579xw:0.490xh;0.356xw,0.469xh&resize=1200:*"
-                        alt="">
-                    <div>
-                        <!-- This is bottom half - content n stuff -->
-                        <h4>2026 Mazda CX-50</h4>
-                        <p>24mpg City | 33mpg HW</p>
-                        <hr>
-                        <div class="car-display-chip-details-price">
-                            <!-- This div will be flex space-between -->
-                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
-                            <p>$299/mo</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="car-display-chip">
-                    <!-- Top half is a car image on cover -->
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Ford_Bronco_%286th_generation%29_1X7A0874.jpg/960px-Ford_Bronco_%286th_generation%29_1X7A0874.jpg"
-                        alt="">
-                    <div>
-                        <!-- This is bottom half - content n stuff -->
-                        <h4>2025 Ford Bronco</h4>
-                        <p>25mpg City | 28mpg HW</p>
-                        <hr>
-                        <div class="car-display-chip-details-price">
-                            <!-- This div will be flex space-between -->
-                            <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
-                            <p>$269/mo</p>
-                        </div>
-                    </div>
+                <div id="lower">
+                    <h3 id="hero-car-price">$200/mo</h3>
+                    <button id="car-details-btn">VIEW</button>
                 </div>
             </div>
-        </div>
-        <div id="car-brands">
-            <h3>Brand Options</h3>
-            <div id="brand-chip-container">
-                <!-- THESE LOGOS WILL BE CLICKABLE BY JAVASCRIPT, PASSING ARG VIA REDIRECT LINK -->
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/toyota-logo.png" alt="Toyota" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/honda-logo.png" alt="Honda" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/chevrolet-logo.png" alt="Chevrolet"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/ford-logo.png" alt="Ford" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/mercedes-benz-logo.png" alt="Mercedes-Benz"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/jeep-logo.png" alt="Jeep" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/bmw-logo.png" alt="BMW" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/porsche-logo.png" alt="Porsche" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/subaru-logo.png" alt="Subaru" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/nissan-logo.png" alt="Nissan" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/cadillac-logo.png" alt="Cadillac"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/volkswagen-logo.png" alt="Volkswagen"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/lexus-logo.png" alt="Lexus" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/audi-logo.png" alt="Audi" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/ferrari-logo.png" alt="Ferrari" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/volvo-logo.png" alt="Volvo" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/jaguar-logo.png" alt="Jaguar" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/gmc-logo.png" alt="GMC" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/buick-logo.png" alt="Buick" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/acura-logo.png" alt="Acura" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/bentley-logo.png" alt="Bentley" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/dodge-logo.png" alt="Dodge" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/hyundai-logo.png" alt="Hyundai" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/lincoln-logo.png" alt="Lincoln" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/mazda-logo.png" alt="Mazda" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/land-rover-logo.png" alt="Land Rover"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/tesla-logo.png" alt="Tesla" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/ram-logo.png" alt="Ram Trucks" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/kia-logo.png" alt="Kia" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/chrysler-logo.png" alt="Chrysler"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/pontiac-logo.png" alt="Pontiac" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/infiniti-logo.png" alt="Infiniti"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/mitsubishi-logo.png" alt="Mitsubishi"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/oldsmobile-logo.png" alt="Oldsmobile"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/maserati-logo.png" alt="Maserati"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/aston-martin-logo.png" alt="Aston Martin"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/bugatti-logo.png" alt="Bugatti" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/fiat-logo.png" alt="Fiat" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/mini-logo.png" alt="Mini" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/alfa-romeo-logo.png" alt="Alfa Romeo"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/saab-logo.png" alt="Saab" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/genesis-logo.png" alt="Genesis" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/suzuki-logo.png" alt="Suzuki" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/studebaker-logo.png" alt="Studebaker"
-                        class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/renault-logo.png" alt="Renault" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/peugeot-logo.png" alt="Peugeot" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/daewoo-logo.png" alt="Daewoo" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/hudson-logo.png" alt="Hudson" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/citroen-logo.png" alt="Citroen" class="brand-chip-img">
-                </div>
-
-                <div class="brand-chip">
-                    <img src="https://www.carlogos.org/car-logos/mg-logo.png" alt="MG" class="brand-chip-img">
-                </div>
-            </div>
+            <div id="car-scrollbar"></div>
         </div>
     </main>
-    <footer>
 
-    </footer>
+    <!-- Previously Viewed Cars -->
+    <div id="previous-cars">
+        <h1>Previously Viewed Cars</h1>
+        <div id="previous-inner">
+            <div class="prev-car">
+                <img src="./img/source_image.png" alt="2025 Ford Bronco">
+                <div class="info">
+                    <h4>2025 Ford Bronco</h4>
+                    <p>25mpg City | 28mpg HW</p>
+                    <hr>
+                    <div class="car-display-chip-details-price">
+                        <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                        <p>$269/mo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="prev-car">
+                <img src="./img/source_image.png" alt="2025 Ford Bronco">
+                <div class="info">
+                    <h4>2025 Ford Bronco</h4>
+                    <p>25mpg City | 28mpg HW</p>
+                    <hr>
+                    <div class="car-display-chip-details-price">
+                        <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                        <p>$269/mo</p>
+                    </div>
+                </div>
+            </div>
+            <div class="prev-car">
+                <img src="./img/source_image.png" alt="2025 Ford Bronco">
+                <div class="info">
+                    <h4>2025 Ford Bronco</h4>
+                    <p>25mpg City | 28mpg HW</p>
+                    <hr>
+                    <div class="car-display-chip-details-price">
+                        <p>24 Month Lease <br> Negotiable <br> Contact Us For More</p>
+                        <p>$269/mo</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-</body>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+    <!-- Brand Chips -->
+    <h1 class="subheading">Brands</h1>
+    <div id="brands">
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/toyota-logo.png" alt="Toyota"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/honda-logo.png" alt="Honda"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/chevrolet-logo.png" alt="Chevrolet"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/ford-logo.png" alt="Ford"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/mercedes-benz-logo.png"
+                alt="Mercedes-Benz"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/jeep-logo.png" alt="Jeep"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/bmw-logo.png" alt="BMW"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/porsche-logo.png" alt="Porsche"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/subaru-logo.png" alt="Subaru"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/nissan-logo.png" alt="Nissan"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/cadillac-logo.png" alt="Cadillac"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/volkswagen-logo.png" alt="Volkswagen">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/lexus-logo.png" alt="Lexus"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/audi-logo.png" alt="Audi"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/ferrari-logo.png" alt="Ferrari"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/volvo-logo.png" alt="Volvo"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/jaguar-logo.png" alt="Jaguar"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/gmc-logo.png" alt="GMC"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/buick-logo.png" alt="Buick"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/acura-logo.png" alt="Acura"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/bentley-logo.png" alt="Bentley"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/dodge-logo.png" alt="Dodge"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/hyundai-logo.png" alt="Hyundai"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/lincoln-logo.png" alt="Lincoln"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/mazda-logo.png" alt="Mazda"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/land-rover-logo.png" alt="Land Rover">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/tesla-logo.png" alt="Tesla"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/ram-logo.png" alt="Ram Trucks"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/kia-logo.png" alt="Kia"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/chrysler-logo.png" alt="Chrysler"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/pontiac-logo.png" alt="Pontiac"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/infiniti-logo.png" alt="Infiniti"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/mitsubishi-logo.png" alt="Mitsubishi">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/oldsmobile-logo.png" alt="Oldsmobile">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/maserati-logo.png" alt="Maserati"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/aston-martin-logo.png" alt="Aston Martin">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/bugatti-logo.png" alt="Bugatti"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/fiat-logo.png" alt="Fiat"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/mini-logo.png" alt="Mini"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/alfa-romeo-logo.png" alt="Alfa Romeo">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/saab-logo.png" alt="Saab"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/genesis-logo.png" alt="Genesis"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/suzuki-logo.png" alt="Suzuki"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/studebaker-logo.png" alt="Studebaker">
+        </div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/renault-logo.png" alt="Renault"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/peugeot-logo.png" alt="Peugeot"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/daewoo-logo.png" alt="Daewoo"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/hudson-logo.png" alt="Hudson"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/citroen-logo.png" alt="Citroen"></div>
+        <div class="brand-chip"><img src="https://www.carlogos.org/car-logos/mg-logo.png" alt="MG"></div>
+    </div>
 
-        let chipContainer = document.getElementById('brand-chip-container');
-        for (let child of chipContainer.children) {
+    <script>
+        // ============================================================
+        // HAMBURGER MENU TOGGLE
+        // ============================================================
+        // const hamburgerBtn = document.getElementById('hamburger-btn');
+        // const mobileMenu = document.getElementById('mobile-menu');
+
+        // hamburgerBtn.addEventListener('click', () => {
+        //     const isOpen = mobileMenu.classList.toggle('open');
+        //     hamburgerBtn.classList.toggle('open', isOpen);
+        // });
+
+        // // Close menu when clicking outside
+        // document.addEventListener('click', (e) => {
+        //     if (!e.target.closest('#bar') && !e.target.closest('#mobile-menu')) {
+        //         mobileMenu.classList.remove('open');
+        //         hamburgerBtn.classList.remove('open');
+        //     }
+        // });
+
+        // // Close menu when a link is clicked
+        // mobileMenu.querySelectorAll('.bar-link').forEach(link => {
+        //     link.addEventListener('click', () => {
+        //         mobileMenu.classList.remove('open');
+        //         hamburgerBtn.classList.remove('open');
+        //     });
+        // });
+
+        // ============================================================
+        // BRAND CHIP NAVIGATION
+        // ============================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            const chips = document.querySelectorAll('.brand-chip');
+            for (const chip of chips) {
+                chip.addEventListener('click', () => {
+                    const img = chip.querySelector('img');
+                    window.location.href = `./pages/car-list.html?make=${img.alt}`;
+                });
+            }
+        });
+
+        // CAR DISPLAY CHIP NAV
+        const prevCars = document.querySelectorAll('.prev-car');
+        for (let child of prevCars) {
             child.addEventListener('click', () => {
-                let childImg = child.children[0];
-                window.location.href = `./pages/car-list.html?make=${childImg.alt}`;
+                window.location.href = `./pages/car-details.html?make=TEMP`;
             });
         }
-    });
 
-    // Carousel Container
-    let thumbnailContainer = document.getElementById('left-scrolling');
-    let mainImage = document.querySelector('#primary-image img');
-    let heroContainer = document.getElementById('hero');
-    let carTitleElement = document.getElementById('hero-car-name');
-    let carPriceElement = document.getElementById('hero-car-price');
-    let dataArr = [];
-    function removeActive() {
-        for (let subImg of thumbnailContainer.children) {
-            subImg.classList.remove('selected');
+
+        // ============================================================
+        // CAROUSEL / HERO
+        // ============================================================
+        const thumbnailContainer = document.getElementById('car-scrollbar');
+        const mainImage = document.querySelector('main');
+        const heroContainer = document.getElementById('primary-car-info');
+        const carTitleElement = document.getElementById('hero-car-name');
+        const carPriceElement = document.getElementById('hero-car-price');
+        let dataArr = [];
+
+        function removeActive() {
+            for (const img of thumbnailContainer.children) {
+                img.classList.remove('selected');
+            }
         }
-    }
 
-    function goNext() {
-        let chosenChild = document.querySelector('.selected');
-        let thumbnails = Array.from(thumbnailContainer.children);
-        let chosenChildPos = thumbnails.indexOf(chosenChild);
+        function goNext() {
+            const thumbnails = Array.from(thumbnailContainer.children);
+            const chosenChild = document.querySelector('.selected');
+            const currentPos = thumbnails.indexOf(chosenChild);
+            const nextPos = currentPos === thumbnails.length - 1 ? 0 : currentPos + 1;
 
-        if (chosenChildPos == thumbnails.length - 1) {
-            let pos = 0;
             removeActive();
-            mainImage.src = thumbnails[0].src;
-            thumbnails[0].classList.add('selected');
+            mainImage.style.backgroundImage = `url(${thumbnails[nextPos].src})`;
+            thumbnails[nextPos].classList.add('selected');
             thumbnailContainer.scrollTo({
-                top: thumbnails[pos].offsetTop - thumbnailContainer.offsetTop,
-                left: thumbnails[pos].offsetLeft - thumbnailContainer.offsetLeft,
+                top: thumbnails[nextPos].offsetTop - thumbnailContainer.offsetTop,
+                left: thumbnails[nextPos].offsetLeft - thumbnailContainer.offsetLeft,
                 behavior: 'smooth'
-            }); carTitleElement.textContent = `${dataArr[0].year} ${dataArr[0].make} ${dataArr[0].model}`;
-            carPriceElement.textContent = `${dataArr[0].monthlyCost}`;
-        } else {
-            let pos = chosenChildPos + 1;
-            removeActive();
-            mainImage.src = thumbnails[chosenChildPos + 1].src;
-            thumbnails[chosenChildPos + 1].classList.add('selected');
-            thumbnailContainer.scrollTo({
-                top: thumbnails[pos].offsetTop - thumbnailContainer.offsetTop,
-                left: thumbnails[pos].offsetLeft - thumbnailContainer.offsetLeft,
-                behavior: 'smooth'
-            }); carTitleElement.textContent = `${dataArr[pos].year} ${dataArr[pos].make} ${dataArr[pos].model}`;
-            carPriceElement.textContent = `${dataArr[pos].monthlyCost}`;
-        }
-    }
-    let slideInterval = setInterval(goNext, 3000);
-    heroContainer.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-    heroContainer.addEventListener('mouseleave', () => {
-        slideInterval = setInterval(goNext, 3000);
-    });
-
-    let givenJSON;
-    (async () => {
-        givenJSON = await fetch('./data/cars.json').then((res) => {
-            return res.json();
-        });
-        console.log(givenJSON);
-        thumbnailContainer.innerHTML = "";
-        for (let item of givenJSON['Brands']) {
-            let thumbnail = document.createElement('img');
-            thumbnail.src = item['cars'][0]['src'];
-            thumbnailContainer.appendChild(thumbnail);
-            dataArr.push({
-                make: item['cars'][0]['make'],
-                model: item['cars'][0]['model'],
-                year: item['cars'][0]['year'],
-                monthlyCost: item['cars'][0]['leaseMonthlyCost'],
             });
-        }
-        thumbnailContainer.children[0].classList.add('selected');
-
-        for (let img of thumbnailContainer.children) {
-            img.addEventListener('click', () => {
-                let pos = Array.from(thumbnailContainer.children).indexOf(img);
-                removeActive();
-                mainImage.src = img.src;
-                img.classList.add('selected');
-                carTitleElement.textContent = `${dataArr[pos].year} ${dataArr[pos].make} ${dataArr[pos].model}`;
-                carPriceElement.textContent = `${dataArr[pos].monthlyCost}`;
-            });
-        }
-        goNext();
-
-
-
-
-
-
-
-        //SEARCH IMPLEMENTATION HERE:
-        let carData = [];
-        for (let brand of givenJSON['Brands']) {
-            for (let car of brand['cars']) {
-                carData.push({
-                    year: car.year,
-                    make: car.make,
-                    model: car.model
-                });
-            }
+            carTitleElement.textContent = `${dataArr[nextPos].year} ${dataArr[nextPos].make} ${dataArr[nextPos].model}`;
+            carPriceElement.textContent = dataArr[nextPos].monthlyCost;
         }
 
-        let viewDetailsBtn = document.getElementById('hero-view-details');
-        viewDetailsBtn.addEventListener('click', () => {
-            let selected = document.querySelector('#left-scrolling .selected');
-            let pos = Array.from(thumbnailContainer.children).indexOf(selected);
-            let make = dataArr[pos]['make'];
-            window.location.href = `./pages/car-details.html?make=${make}`;
-        });
+        let slideInterval = setInterval(goNext, 3000);
+        heroContainer.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        heroContainer.addEventListener('mouseleave', () => { slideInterval = setInterval(goNext, 3000); });
 
-        const searchInput = document.querySelector('input[name="make"]');
-        const suggestionList = document.getElementById('search-suggestions');
+        // ============================================================
+        // DATA FETCH & SEARCH
+        // ============================================================
+        // (async () => {
+        //     const givenJSON = await fetch('./data/cars.json').then(res => res.json());
+        //     console.log(givenJSON);
 
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.trim().toLowerCase();
-            suggestionList.innerHTML = '';
+        //     // Populate thumbnail carousel
+        //     thumbnailContainer.innerHTML = '';
+        //     for (const item of givenJSON['Brands']) {
+        //         const car = item['cars'][0];
+        //         const thumbnail = document.createElement('img');
+        //         thumbnail.src = car.src;
+        //         thumbnailContainer.appendChild(thumbnail);
+        //         dataArr.push({
+        //             make: car.make,
+        //             model: car.model,
+        //             year: car.year,
+        //             monthlyCost: car.leaseMonthlyCost,
+        //         });
+        //     }
+        //     thumbnailContainer.children[0].classList.add('selected');
 
-            if (!query) {
-                suggestionList.style.display = 'none';
-                return;
-            }
+        //     for (const img of thumbnailContainer.children) {
+        //         img.addEventListener('click', () => {
+        //             const pos = Array.from(thumbnailContainer.children).indexOf(img);
+        //             removeActive();
+        //             mainImage.style.backgroundImage = `src(${img.src})`;
+        //             img.classList.add('selected');
+        //             carTitleElement.textContent = `${dataArr[pos].year} ${dataArr[pos].make} ${dataArr[pos].model}`;
+        //             carPriceElement.textContent = dataArr[pos].monthlyCost;
+        //         });
+        //     }
 
-            const matches = carData.filter(car =>
-                `${car.year} ${car.make} ${car.model}`.toLowerCase().includes(query) ||
-                car.make.toLowerCase().startsWith(query) ||
-                car.model.toLowerCase().startsWith(query)
-            ).slice(0, 8);
+        //     goNext();
 
-            if (matches.length === 0) {
-                suggestionList.innerHTML = '<li>No Results Found.</li>';
-                return;
-            }
+        //     // View details button
+        //     document.getElementById('car-details-btn').addEventListener('click', () => {
+        //         const selected = document.querySelector('#car-scrollbar .selected');
+        //         const pos = Array.from(thumbnailContainer.children).indexOf(selected);
+        //         window.location.href = `./pages/car-details.html?make=${dataArr[pos].make}`;
+        //     });
 
-            for (const car of matches) {
-                const li = document.createElement('li');
-                li.textContent = `${car.year} ${car.make} ${car.model}`;
-                li.addEventListener('click', () => {
-                    searchInput.value = li.textContent;
-                    suggestionList.style.display = 'none';
-                });
-                suggestionList.appendChild(li);
-            }
+        //     // Search / autocomplete
+        //     const carData = givenJSON['Brands'].flatMap(brand =>
+        //         brand.cars.map(car => ({ year: car.year, make: car.make, model: car.model }))
+        //     );
 
-            suggestionList.style.display = 'block';
-        });
+        //     const searchInput = document.querySelector('#searchbar');
+        //     const suggestionList = document.getElementById('search-suggestions');
 
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('#searchContainer')) {
-                suggestionList.style.display = 'none';
-            }
-        });
-    })();
+        //     searchInput.addEventListener('input', () => {
+        //         const query = searchInput.value.trim().toLowerCase();
+        //         suggestionList.innerHTML = '';
 
+        //         if (!query) {
+        //             suggestionList.style.display = 'none';
+        //             return;
+        //         }
 
+        //         const matches = carData.filter(car =>
+        //             `${car.year} ${car.make} ${car.model}`.toLowerCase().includes(query) ||
+        //             car.make.toLowerCase().startsWith(query) ||
+        //             car.model.toLowerCase().startsWith(query)
+        //         ).slice(0, 8);
 
+        //         if (matches.length === 0) {
+        //             suggestionList.innerHTML = '<li>No Results Found.</li>';
+        //             return;
+        //         }
 
+        //         for (const car of matches) {
+        //             const li = document.createElement('li');
+        //             li.textContent = `${car.year} ${car.make} ${car.model}`;
+        //             li.addEventListener('click', () => {
+        //                 searchInput.value = li.textContent;
+        //                 suggestionList.style.display = 'none';
+        //             });
+        //             suggestionList.appendChild(li);
+        //         }
 
-</script>
+        //         suggestionList.style.display = 'block';
+        //     });
+
+        //     document.addEventListener('click', e => {
+        //         if (!e.target.closest('#searchContainer')) {
+        //             suggestionList.style.display = 'none';
+        //         }
+        //     });
+        // })();
+
+        // const darkmodeToggle = document.getElementById('mode-toggle');
+        // darkmodeToggle.addEventListener('click', ()=>{
+        //     document.body.classList.toggle('dark-mode');
+        // });
+    </script>
+</body>
 
 </html>

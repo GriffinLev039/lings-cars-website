@@ -1,123 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis:YEAR@1979&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary-color: #EB5E28;
+    --foreground-color: #252422;
+    --background-color: #403D39;
     --foreground: #252422;
     --background: #403D39;
     --heading-color: #FFFCF2;
     --text-color: #CCC5B9;
-}
-
-/* HEADER CSS */
-header {
-    display: flex;
-    flex-flow: row nowrap;
-    width: 100vw;
-    color: var(--primary-color);
-    background-color: var(--foreground);
-    padding: 1vh 5vw;
-    font-size: 1.56rem;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#header-container {
-    display: flex;
-    flex-flow: row nowrap;
-    list-style: none;
-    gap: 2vw;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav li {
-    padding: 2.5%;
-    border-radius: 20px;
-    margin: 0;
-    padding: 0.5rem 1rem;
-}
-
-header nav li a {
-    padding: 0;
-    margin: 0;
-    white-space: nowrap;
-    color: var(--heading-color);
-    transition: all 0.10s ease-in-out;
+    --transparent-bg: rgba(64, 61, 57, 0.40);
+    --lighter-text: rgba(255, 255, 255, 0.60);
+    --bar-bg: linear-gradient(0deg, rgba(64, 61, 57, 0.40) 0%, rgba(64, 61, 57, 0.40) 100%), rgba(0, 0, 0, 0.27);
 }
 
 
-#header-container>li:hover {
-    background-color: var(--primary-color);
-    transition: all 0.25s ease-in-out;
+.dark-mode {
+    --primary-color: #EB5E28;
+    --foreground: #ffffff;
+    --background: #f5f5f5;
+    --foreground-color: #ffffff;
+    --background-color: #f5f5f5;
+    --heading-color: #222222;
+    --text-color: #333333;
+    --lighter-text: rgba(33, 33, 33, 0.60);
+    --transparent-bg: rgba(255, 255, 255, 0.40);
+    --bar-bg: linear-gradient(0deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.40) 100%), rgba(255, 255, 255, 0.27);
 }
 
-#header-container>li:hover a {
-    color: var(--foreground);
-    /* transition: all 0.10s ease-in-out; */
-    text-shadow: var(--foreground) 1px -2px;
-}
-
-#header-container>li:active a {
-    text-shadow: none;
-}
-
-#hamburger-icon {
-    display: none;
-    cursor: pointer;
-    background-color: var(--background);
-    color: var(--text-color);
-    aspect-ratio: 1/1;
-    height: 2.8rem;
+#bar {
     box-sizing: border-box;
-    font-size: 2rem;
-    
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 4rem;
+    padding: 0 4vh;
+    background: var(--bar-bg);
+    background-blend-mode: normal, plus-darker;
+    box-shadow:
+        -10.786px -10.053px 46.433px -11.608px rgba(0, 0, 0, 0.15),
+        -1.798px -1.675px 11.608px -7.739px rgba(0, 0, 0, 0.15),
+        2.697px 2.513px 11.608px 0 rgba(255, 255, 255, 0.02) inset,
+        1.798px 1.675px 5.804px 0 rgba(255, 255, 255, 0.02) inset;
+    backdrop-filter: blur(19.35px);
 }
 
-#hamburger-icon:hover {
-    color: var(--primary-color);
-    transition: all 0.25s ease-in-out;
+#bar ul {
+    width: 60%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+}
+
+#logo {
+    max-height: 100%;
+    cursor: pointer;
+}
+
+.bar-link {
+    color: var(--heading-color);
+    font-family: Inter;
+    font-size: 2.4rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    text-decoration: none;
+    transition: color ease-in-out 0.2s;
+}
+
+#searchbar-container {
+    box-sizing: border-box;
+    width: auto;
+    height: 65%;
+    margin-right: 30px;
+    background-color: none;
 
 }
 
-#hamburger-icon:active {
-    color: var(--background);
+#searchbar {
+    box-sizing: border-box;
+    padding-left: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 30.805px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.10) url('./car-with-rainbow-colored-line-top-it_973002-8470-removebg-preview.png') no-repeat left center;
+    background-blend-mode: plus-lighter;
+    background-size: 20px;
+    box-shadow: 0 3.869px 3.869px 0 rgba(0, 0, 0, 0.25) inset;
+    color:
+        font-family: Inter;
+    font-size: 2.3rem;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+    transition: box-shadow 5s ease-in-out;
+}
+
+#hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 2.8rem;
+    height: 2.8rem;
+    cursor: pointer;
+    background: var(--background-color);
+    border: none;
+    border-radius: 8px;
+    padding: 6px;
+    flex-shrink: 0;
+    transition: background 0.2s ease-in-out;
+}
+
+#hamburger-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-color);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.2s ease;
+    transform-origin: center;
+}
+
+#hamburger-btn:hover {
+    background: var(--foreground-color);
+}
+
+#hamburger-btn:hover span {
     background-color: var(--primary-color);
-        transition: all 0.08s ease-out;
 }
 
-@media (max-width: 600px) {
-    nav li {
-        display: none;
+#hamburger-btn:active {
+    background: var(--primary-color);
+}
 
+#hamburger-btn:active span {
+    background-color: var(--foreground-color);
+}
+
+#hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+#hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+#hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+#mobile-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100%;
+    background: rgba(37, 36, 34, 0.97);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    z-index: 99;
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+#mobile-menu.open {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+}
+
+#mobile-menu li {
+    border-bottom: 1px solid rgba(204, 197, 185, 0.08);
+}
+
+#mobile-menu li:last-child {
+    border-bottom: none;
+}
+
+#mobile-menu .bar-link {
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1.8rem;
+    font-weight: 300;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+#mobile-menu .bar-link:hover {
+    background: var(--background-color);
+    color: var(--primary-color);
+}
+
+@media (hover: hover) {
+    .bar-link:hover {
+        color: var(--primary-color);
     }
 
-    #hamburger-icon,
-    #invis-spacer {
-        display: block;
-    }
+}
 
-    nav li.active {
-        display: block;
-    }
-
-    #hburger-container {
-        display: flex;
+@media (max-width: 800px) {
+    #bar {
         justify-content: space-between;
+        align-items: center;
+    }
+
+    #bar ul {
+        display: none;
+    }
+
+    #searchbar-container,
+    #searchbar {
         width: 100%;
     }
+
+    #hamburger-btn {
+        display: flex;
+    }
 }
 
-@media (max-width: 950px) {
-    header {
-        flex-direction: column;
-        gap: 1rem;
-    }
 
-    #header-container {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
+#search-suggestions {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background-color: var(--transparent-bg);
+    backdrop-filter: blur(19.35px);
+    border: 1px solid var(--text-color);
+    border-radius: 0 0 20px 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 100;
+    display: none;
+}
 
-    header nav li {
-        font-size: 1.1rem;
-    }
+#search-suggestions li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: var(--text-color);
+    backdrop-filter: blur(13.7px);
+}
+
+#search-suggestions li:hover {
+    color: var(--primary-color);
+}
+
+#mode-toggle {
+    height: 80%;
+    aspect-ratio: 1/1;
+    background-color: var(--transparent-bg);
+    border: 0;
+    border-radius: 10px;
+    backdrop-filter: blur(40px);
+    outline: none;
+    transition: ease-in-out all 0.2s;
+
+}
+
+#mode-toggle:hover {
+    height: 80%;
+    aspect-ratio: 1/1;
+    color: var(--primary-color);
+    background-color: var(--transparent-bg);
+    border: 0px solid black;
+    border-radius: 10px;
+    backdrop-filter: blur(40px);
+    outline: none;
+
 }
