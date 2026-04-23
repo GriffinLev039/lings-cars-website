@@ -23,148 +23,147 @@
     <link rel="stylesheet" href="../css/confirmation.css">
     <!-- Styles THIS specific confirmation page -->
 
-    <script src="../js/hamburger-handler.js" defer></script>
+    <script src="../js/bar.js"></script>
     <!-- Handles the hamburger menu on smaller screens -->
 </head>
 
 <body>
 
-<header>
-    <!-- This is the top navigation bar -->
+    <header>
+        <!-- Navbar -->
+        <div id="bar">
+            <a href="../index.html"><img
+                    src="../img/car-with-rainbow-colored-line-top-it_973002-8470-removebg-preview.png" alt="Logo"
+                    id="logo"></a>
+            <ul>
+                <li><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">About</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+            </ul>
+            <form id="searchbar-container" action="../pages/car-list.html" method="get">
+                <input placeholder="2024 Nissan Sentra" id="searchbar" />
+                <ul id="search-suggestions"></ul>
+            </form>
 
-    <div id="hburger-container">
-        <!-- Groups hamburger icon, logo, and spacing -->
+            <!-- Hamburger button (mobile only) -->
+            <button id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <button id="hamburger-icon">=</button>
-        <!-- Button used to toggle menu on small screens -->
+            <button id="mode-toggle">☾</button>
+        </div>
+    </header>
+
+
+    <!-- Mobile dropdown menu -->
+    <ul id="mobile-menu" role="menu">
+        <li role="menuitem"><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">About</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+    </ul>
+
+    <main class="confirmation-main">
+        <!-- Main content area for confirmation page -->
+
+        <h1>Purchase Confirmed ✅</h1>
+        <!-- Big success message at the top -->
+
+        <p>Your order has been successfully submitted!</p>
+        <!-- Small confirmation message -->
+
+        <div class="summary-box">
+            <!-- This box holds all the order details -->
+
+            <h2>Order Summary</h2>
+            <!-- Section title -->
+
+            <hr>
+            <!-- Divider line -->
+
+            <h3>Car Details</h3>
+            <!-- Subsection for car info -->
+
+            <p><strong>Car Name:</strong> <span id="car-name"></span></p>
+            <!-- This will be filled with the car the user typed -->
+
+            <p><strong>Monthly Price:</strong> <span id="monthly-price"></span></p>
+            <!-- This will show the user's budget/monthly payment -->
+
+            <p><strong>Deposit:</strong> <span id="deposit"></span></p>
+            <!-- This shows the down payment -->
+
+            <hr>
+            <!-- Divider line -->
+
+            <h3>Customer Info</h3>
+            <!-- Subsection for user info -->
+
+            <p><strong>Name:</strong> <span id="customer-name"></span></p>
+            <!-- Displays the user's name -->
+
+            <p><strong>Email:</strong> <span id="customer-email"></span></p>
+            <!-- Displays the user's email -->
+
+        </div>
+
+        <p>A confirmation email has been sent to your email.</p>
+        <!-- Extra message to make it feel real -->
 
         <a href="../index.html">
-            <div id="logo">LOGO</div>
+            <button class="browse-btn">Browse More Cars</button>
         </a>
-        <!-- Clickable logo that sends user back to homepage -->
+        <!-- Button to go back to homepage -->
 
-        <div id="invis-spacer"></div>
-        <!-- Helps keep layout aligned evenly -->
-    </div>
+    </main>
 
-    <nav>
-        <ul id="header-container">
-            <!-- Navigation links -->
-
-            <li><a href="#">Car Leasing</a></li>
-            <!-- Link to car leasing section -->
-
-            <li><a href="#">Van Leasing</a></li>
-            <!-- Link to van leasing section -->
-
-            <li><a href="#">Contact Us</a></li>
-            <!-- Link to contact page -->
-
-            <li><a href="#">About Us</a></li>
-            <!-- Link to about page -->
-        </ul>
-    </nav>
-</header>
-
-<main class="confirmation-main">
-    <!-- Main content area for confirmation page -->
-
-    <h1>Purchase Confirmed ✅</h1>
-    <!-- Big success message at the top -->
-
-    <p>Your order has been successfully submitted!</p>
-    <!-- Small confirmation message -->
-
-    <div class="summary-box">
-        <!-- This box holds all the order details -->
-
-        <h2>Order Summary</h2>
-        <!-- Section title -->
-
-        <hr>
-        <!-- Divider line -->
-
-        <h3>Car Details</h3>
-        <!-- Subsection for car info -->
-
-        <p><strong>Car Name:</strong> <span id="car-name"></span></p>
-        <!-- This will be filled with the car the user typed -->
-
-        <p><strong>Monthly Price:</strong> <span id="monthly-price"></span></p>
-        <!-- This will show the user's budget/monthly payment -->
-
-        <p><strong>Deposit:</strong> <span id="deposit"></span></p>
-        <!-- This shows the down payment -->
-
-        <hr>
-        <!-- Divider line -->
-
-        <h3>Customer Info</h3>
-        <!-- Subsection for user info -->
-
-        <p><strong>Name:</strong> <span id="customer-name"></span></p>
-        <!-- Displays the user's name -->
-
-        <p><strong>Email:</strong> <span id="customer-email"></span></p>
-        <!-- Displays the user's email -->
-
-    </div>
-
-    <p>A confirmation email has been sent to your email.</p>
-    <!-- Extra message to make it feel real -->
-
-    <a href="../index.html">
-        <button class="browse-btn">Browse More Cars</button>
-    </a>
-    <!-- Button to go back to homepage -->
-
-</main>
-
-<footer>
-    <!-- Empty footer for now -->
-</footer>
+    <footer>
+        <!-- Empty footer for now -->
+    </footer>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+    <!-- ================= JAVASCRIPT ================= -->
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    // Waits until the page fully loads before running the script
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Waits until the page fully loads before running the script
 
-    // Get values from localStorage (saved from the leasing form)
-    const name = localStorage.getItem("name");
-    // Gets the user's name
+            // Get values from localStorage (saved from the leasing form)
+            const name = localStorage.getItem("name");
+            // Gets the user's name
 
-    const email = localStorage.getItem("email");
-    // Gets the user's email
+            const email = localStorage.getItem("email");
+            // Gets the user's email
 
-    const car = localStorage.getItem("car");
-    // Gets the car they selected
+            const car = localStorage.getItem("car");
+            // Gets the car they selected
 
-    const budget = localStorage.getItem("budget");
-    // Gets the monthly budget
+            const budget = localStorage.getItem("budget");
+            // Gets the monthly budget
 
-    const down = localStorage.getItem("down");
-    // Gets the down payment
+            const down = localStorage.getItem("down");
+            // Gets the down payment
 
-    // Put those values into the page
-    document.getElementById("customer-name").textContent = name;
-    // Inserts name into the HTML
+            // Put those values into the page
+            document.getElementById("customer-name").textContent = name;
+            // Inserts name into the HTML
 
-    document.getElementById("customer-email").textContent = email;
-    // Inserts email into the HTML
+            document.getElementById("customer-email").textContent = email;
+            // Inserts email into the HTML
 
-    document.getElementById("car-name").textContent = car;
-    // Inserts car name into the HTML
+            document.getElementById("car-name").textContent = car;
+            // Inserts car name into the HTML
 
-    document.getElementById("monthly-price").textContent = budget;
-    // Inserts monthly price
+            document.getElementById("monthly-price").textContent = budget;
+            // Inserts monthly price
 
-    document.getElementById("deposit").textContent = down;
-    // Inserts deposit amount
+            document.getElementById("deposit").textContent = down;
+            // Inserts deposit amount
 
-});
-</script>
+        });
+    </script>
 
 </body>
+
 </html>

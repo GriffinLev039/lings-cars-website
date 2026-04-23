@@ -19,72 +19,86 @@
     <link rel="stylesheet" href="../css/about-us.css">
 
     <!-- Hamburger menu toggle, same one used on all pages -->
-    <script src="../js/hamburger-handler.js" defer></script>
+    <script src="../js/bar.js" defer></script>
 </head>
 
 <body>
 
-<!-- ── Navigation Header ── -->
-<!-- Same structure as index.html so header styles apply correctly -->
-<header>
-    <div id="hburger-container">
-        <!-- Shows on small screens, opens the nav menu when clicked -->
-        <button id="hamburger-icon">=</button>
+    <!-- ── Navigation Header ── -->
+    <!-- Same structure as index.html so header styles apply correctly -->
+    <header>
+        <!-- Navbar -->
+        <div id="bar">
+            <a href="../index.html"><img
+                    src="../img/car-with-rainbow-colored-line-top-it_973002-8470-removebg-preview.png" alt="Logo"
+                    id="logo"></a>
+            <ul>
+                <li><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">About</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+            </ul>
+            <form id="searchbar-container" action="../pages/car-list.html" method="get">
+                <input placeholder="2024 Nissan Sentra" id="searchbar" />
+                <ul id="search-suggestions"></ul>
+            </form>
 
-        <!-- Logo links back to the home page -->
-        <a id="logo" href="../index.html">LOGO</a>
+            <!-- Hamburger button (mobile only) -->
+            <button id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <!-- Invisible spacer keeps the logo centered on mobile -->
-        <div id="invis-spacer"></div>
-    </div>
+            <button id="mode-toggle">☾</button>
+        </div>
+    </header>
 
-    <nav>
-        <!-- Nav links, About Us is marked as the current page -->
-        <ul id="header-container">
-            <li id="car-leasing" class="header-item"><a href="./car-list.html">Car Leasing</a></li>
-            <li id="van-leasing" class="header-item"><a href="./car-list.html">Van Leasing</a></li>
-            <li id="contact-us" class="header-item"><a href="./about-us.html">Contact Us</a></li>
-            <li id="about-us" class="header-item current-page"><a href="./about-us.html">About Us</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Mobile dropdown menu -->
+    <ul id="mobile-menu" role="menu">
+        <li role="menuitem"><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">About</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+    </ul>
 
-<main class="about-main">
+    <main class="about-main">
 
-    <!-- Big orange site name at the top of the page -->
-    <h1 class="about-title">Ling's Cars</h1>
+        <!-- Big orange site name at the top of the page -->
+        <h1 class="about-title">Ling's Cars</h1>
 
-    <!-- Description box with a short blurb about the company -->
-    <div class="about-box about-description">
-        <p>Ling's Cars is the best car leasing company! We help people lease cars without having to deal with a dealership. We have lots of cars to choose from and we try to make the whole process as easy as possible. If you want to lease a car just browse our listings and we will take care of the rest.</p>
-    </div>
-
-    <!-- Side by side on desktop, stacked on mobile -->
-    <div class="about-info-row">
-
-        <!-- Left box with the company's address -->
-        <div class="about-box">
-            <h2 class="about-box-title">Address Info:</h2>
-            <p>Ling's Cars HQ<br>
-               123 Fake Street, Suite 1<br>
-               Anytown, NC 00000<br>
-               United States</p>
+        <!-- Description box with a short blurb about the company -->
+        <div class="about-box about-description">
+            <p>Ling's Cars is the best car leasing company! We help people lease cars without having to deal with a
+                dealership. We have lots of cars to choose from and we try to make the whole process as easy as
+                possible. If you want to lease a car just browse our listings and we will take care of the rest.</p>
         </div>
 
-        <!-- Right box with contact details -->
-        <div class="about-box">
-            <h2 class="about-box-title">Contact Info:</h2>
-            <p>Phone: 1234567890<br>
-               Email: hello@lingscars.com<br>
-               Hours: Mon-Fri, 9am-6pm<br>
-               Sat: 10am-4pm</p>
+        <!-- Side by side on desktop, stacked on mobile -->
+        <div class="about-info-row">
+
+            <!-- Left box with the company's address -->
+            <div class="about-box">
+                <h2 class="about-box-title">Address Info:</h2>
+                <p>Ling's Cars HQ<br>
+                    123 Fake Street, Suite 1<br>
+                    Anytown, NC 00000<br>
+                    United States</p>
+            </div>
+
+            <!-- Right box with contact details -->
+            <div class="about-box">
+                <h2 class="about-box-title">Contact Info:</h2>
+                <p>Phone: 1234567890<br>
+                    Email: hello@lingscars.com<br>
+                    Hours: Mon-Fri, 9am-6pm<br>
+                    Sat: 10am-4pm</p>
+            </div>
+
         </div>
 
-    </div>
+    </main>
 
-</main>
-
-<footer></footer>
+    <footer></footer>
 
 </body>
+
 </html>

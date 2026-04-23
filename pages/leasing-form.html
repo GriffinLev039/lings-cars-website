@@ -9,7 +9,7 @@
     <!-- This is for the sizing -->
 
     <title>Leasing Application</title>
-    
+
     <link rel="stylesheet" href="../css/reset.css">
     <!-- This links to a reset stylesheet, which removes default browser styling to ensure consistency across different browsers -->
 
@@ -28,95 +28,99 @@
     <script src="../js/leasing-validation.js" defer></script>
     <!-- This script stores form data before redirecting -->
 
-    <script src="../js/darkmode.js" defer></script>
+    <!-- <script src="../js/darkmode.js" defer></script> -->
+    <script src="../js/bar.js" defer></script>
 
 </head>
 
 <body>
 
-<header>
-    <!-- This section represents the top navigation bar of the website -->
+    <header>
+        <!-- Navbar -->
+        <div id="bar">
+            <a href="../index.html"><img
+                    src="../img/car-with-rainbow-colored-line-top-it_973002-8470-removebg-preview.png" alt="Logo"
+                    id="logo"></a>
+            <ul>
+                <li><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">About</a></li>
+                <li><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+            </ul>
+            <form id="searchbar-container" action="../pages/car-list.html" method="get">
+                <input placeholder="2024 Nissan Sentra" id="searchbar" />
+                <ul id="search-suggestions"></ul>
+            </form>
 
-    <div id="hburger-container">
-        <!-- This container groups the hamburger icon, logo, and spacer for mobile layout alignment -->
+            <!-- Hamburger button (mobile only) -->
+            <button id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-        <button id="hamburger-icon">=</button>
-        <!-- Hamburger menu icon -->
+            <button id="mode-toggle">☾</button>
+        </div>
+    </header>
 
-        <a href="../index.html">
-            <div id="logo">LOGO</div>
-        <!--  placeholder for logo -->
-        </a>
+    <!-- Mobile dropdown menu -->
+    <ul id="mobile-menu" role="menu">
+        <li role="menuitem"><a href="../pages/car-list.html" class="bar-link">Browse</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">About</a></li>
+        <li role="menuitem"><a href="../pages/about-us.html" class="bar-link">Contact</a></li>
+    </ul>
 
-        <div id="invis-spacer"></div>
-        <!-- This invisible spacer helps maintain proper alignment -->
-    </div>
+    <main class="leasing-main">
 
-    <nav>
-        <ul id="header-container">
-            <!-- This unordered list holds each navigation item -->
-        
-            <li><a href="#">Car Leasing</a></li>
-            <li><a href="#">Van Leasing</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">About Us</a></li>
-        </ul>
-    </nav>
+        <h1>Leasing Application</h1>
 
-    <button id="dark-toggle">☾</button>
-</header>
+        <!--  ADDED id="leasing-form" -->
+        <form class="leasing-form" id="leasing-form" action="./purchase-confirmation.html">
+            <!-- This form element collects user input for the leasing application -->
 
-<main class="leasing-main">
-    
-    <h1>Leasing Application</h1>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" placeholder="John" required>
+            <!-- This input field allows the user to enter their full name -->
 
-    <!--  ADDED id="leasing-form" -->
-    <form class="leasing-form" id="leasing-form" action="./purchase-confirmation.html">
-        <!-- This form element collects user input for the leasing application -->
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="John@email.com" required>
+            <!-- This input field allows the user to enter their email -->
 
-        <label for="name">Full Name</label>
-        <input type="text" id="name" placeholder="John" required>
-        <!-- This input field allows the user to enter their full name -->
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(999)-999-9999" required>
+            <!-- This input field allows the user to enter a phone number -->
 
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="John@email.com" required>
-        <!-- This input field allows the user to enter their email -->
+            <label for="car">Car Selected</label>
+            <input type="text" id="car" placeholder="Honda" required>
+            <!-- This input field allows the user to enter the selected car -->
 
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" placeholder="(999)-999-9999" required>
-        <!-- This input field allows the user to enter a phone number -->
+            <label for="term">Lease Term</label>
+            <input type="text" id="term" placeholder="65 months">
+            <!-- Lease duration -->
 
-        <label for="car">Car Selected</label>
-        <input type="text" id="car" placeholder="Honda" required>
-        <!-- This input field allows the user to enter the selected car -->
+            <label for="budget">Monthly Budget</label>
+            <input type="text" id="budget" placeholder="$1000">
+            <!-- Monthly payment -->
 
-        <label for="term">Lease Term</label>
-        <input type="text" id="term" placeholder="65 months">
-        <!-- Lease duration -->
+            <label for="down">Down Payment</label>
+            <input type="text" id="down" placeholder="$2000">
+            <!-- Down payment -->
 
-        <label for="budget">Monthly Budget</label>
-        <input type="text" id="budget" placeholder="$1000">
-        <!-- Monthly payment -->
+            <label for="credit">Credit Score</label>
+            <input type="text" id="credit" placeholder="780">
+            <!-- Credit score -->
 
-        <label for="down">Down Payment</label>
-        <input type="text" id="down" placeholder="$2000">
-        <!-- Down payment -->
+            <button type="submit">Submit Application</button>
 
-        <label for="credit">Credit Score</label>
-        <input type="text" id="credit" placeholder="780">
-        <!-- Credit score -->
+            <p class="error-text" id="error-msg" style="display: none;">
+                Please Enter a Valid Input in the Highlighted Fields!!
+            </p>
 
-        <button type="submit">Submit Application</button>
-        
-        <p class="error-text" id="error-msg" style="display: none;">
-            Please Enter a Valid Input in the Highlighted Fields!!
-        </p>
+        </form>
 
-    </form>
+    </main>
 
-</main>
-
-<footer></footer>
+    <footer></footer>
 
 </body>
+
 </html>
