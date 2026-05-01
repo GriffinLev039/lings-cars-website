@@ -1,3 +1,5 @@
+A redesign of the Ling's Cars dealership website, featuring a browsable car listing with filters and sorting, individual car detail pages, and a leasing form.
+
 To run this project, simply clone the repository at:
 `git@github.com:GriffinLev039/lings-cars-website.git`
 and then open the `index.html` file. 
